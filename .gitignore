@@ -33,5 +33,4 @@
 
 #QtCreator
 *.user*
-*.pro
 *build*
