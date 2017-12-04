@@ -207,6 +207,11 @@ void CCanvas::setView(View _view) {
 
 void CCanvas::paintGL()
 {
+    static double isle = 0.0;
+    isle = isle + 1.0;
+
+    // cout << "Tau: " << tau << std::endl;
+    // cout << "Isle: " << isle << std::endl;
     //glutKeyboardFunc(MyKeyboardFunc);
     //cout << tau*2 << "\n";
     tau=tau+fast;
@@ -273,36 +278,40 @@ void CCanvas::paintGL()
     glScalef(0.1f, 0.1f, 0.1f);
     glTranslatef(0.0f, 100.0f, 50.0f);
     glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
+    glTranslatef(0.0f, sin(isle/30.0)*10.0f, 50.0f);
     modelRock.draw();
     glPopMatrix();
     textureRock.unbind();
 
-// Grass
+    // Grass
     glPushMatrix();
     textureGrass.bind();
     glScalef(0.1f, 0.1f, 0.1f);
     glTranslatef(0.0f, 100.0f, 50.0f);
     glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
+    glTranslatef(0.0f, sin(isle/30.0)*10.0f, 50.0f);
     modelGrass.draw();
     glPopMatrix();
     textureGrass.unbind();
 
-// Tree
+    // Tree
     glPushMatrix();
     textureTree.bind();
     glScalef(0.1f, 0.1f, 0.1f);
     glTranslatef(0.0f, 100.0f, 50.0f);
     glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
+    glTranslatef(0.0f, sin(isle/30.0)*10.0f, 50.0f);
     modelTree.draw();
     glPopMatrix();
     textureTree.unbind();
 
-// Mill
+    // Mill
     glPushMatrix();
     textureMill.bind();
     glScalef(0.1f, 0.1f, 0.1f);
     glTranslatef(0.0f, 100.0f, 50.0f);
     glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
+    glTranslatef(0.0f, sin(isle/30.0)*10.0f, 50.0f);
     modelMill.draw();
     glPopMatrix();
     textureMill.unbind();
@@ -310,14 +319,15 @@ void CCanvas::paintGL()
 
     // Propeller
     glPushMatrix();
-//    glTranslatef(-prop.x(), -prop.y(), -prop.z());
+    // glTranslatef(-prop.x(), -prop.y(), -prop.z());
     texturePropeller.bind();
-//    glRotatef(tau, 0.0f, 0.0f, 1.0f);
-//    tau += 1.0f;
-//    glTranslatef(prop.x(), prop.y(), prop.z());
+    // glRotatef(tau, 0.0f, 0.0f, 1.0f);
+    // tau += 1.0f;
+    // glTranslatef(prop.x(), prop.y(), prop.z());
     glScalef(0.1f, 0.1f, 0.1f);
     glTranslatef(0.0f, 100.0f, 50.0f);
     glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
+    glTranslatef(0.0f, sin(isle/30.0)*10.0f, 50.0f);
     modelPropeller.draw();
     glPopMatrix();
     texturePropeller.unbind();
