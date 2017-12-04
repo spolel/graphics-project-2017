@@ -327,8 +327,9 @@ void CCanvas::paintGL()
 //BOX
     glPushMatrix();
     textureBox.bind();
+    glRotatef(180.0f, 0.0f, 0.0f, 1.0f);
     glTranslated(0, 10, 0);
-    glScaled(360, 360, 360);
+    glScaled(180, 180, 180);
     //glScaled(tau*2,tau*2,tau*2);
     modelBox.draw();
     textureBox.unbind();
