@@ -32,6 +32,6 @@
 *.app
 
 #QtCreator
-*.user
+*.user*
 *.pro
 *build*
