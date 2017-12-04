@@ -28,10 +28,20 @@ public:
     explicit CCanvas(QWidget *parent = 0) : QGLWidget(parent),tau(0),
         textureRocket("../../../../project_code/train1.jpg"),
         textureBee("../../../../project_code/white.png"),
-        textureBox("../../../../project_code/night.png"),
+        textureBox("../../../../project_code/Models/skyBOSS.jpg"),
         modelRocket("../../../../project_code/rocket.obj"),
-        modelBox("../../../../project_code/boxed.obj"),
-        modelBee("../../../../project_code/boo.obj")
+        modelBox("../../../../project_code/Models/skyBOSS.obj"),
+        modelBee("../../../../project_code/boo.obj"),
+        textureRock("../../../../project_code/Models/Rock.png"),
+        textureGrass("../../../../project_code/Models/Grass.png"),
+        textureTree("../../../../project_code/Models/Tree.png"),
+        textureMill("../../../../project_code/Models/Mill.png"),
+        texturePropeller("../../../../project_code/Models/Propeller.png"),
+        modelRock("../../../../project_code/Models/Rock.obj"),
+        modelGrass("../../../../project_code/Models/Grass.obj"),
+        modelTree("../../../../project_code/Models/Tree.obj"),
+        modelMill("../../../../project_code/Models/Mill.obj"),
+        modelPropeller("../../../../project_code/Models/Propeller.obj")
     {
         QTimer *timer = new QTimer(this);
         connect(timer, SIGNAL(timeout()), this, SLOT(updateGL()));
@@ -69,13 +79,25 @@ private:
     void setView(View _view);
 
     // Models and textures
+    Texture textureRock;
+    Texture textureGrass;
+    Texture textureTree;
+    Texture textureMill;
+    Texture texturePropeller;
     Texture textureRocket;
     Texture textureBee;
     Texture textureBox;
     // Model loaded from .obj format
+    ObjModel modelRock;
+    ObjModel modelGrass;
+    ObjModel modelTree;
+    ObjModel modelMill;
+    ObjModel modelPropeller;
+    // Model loaded from .ply format
+//    PlyModel modelTrain2;
     ObjModel modelRocket;
     ObjModel modelBee;
     ObjModel modelBox;
 };
 
-#endif 
+#endif

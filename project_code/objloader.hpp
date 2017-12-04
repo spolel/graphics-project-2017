@@ -11,7 +11,8 @@ bool loadOBJ(
 	const char * path, 
     std::vector<Point3d> & out_vertices,
     std::vector<Point2d> & out_uvs,
-    std::vector<Point3d> & out_normals
+    std::vector<Point3d> & out_normals,
+    Point3d center
 );
 
 void vecPoint2dToFloat(std::vector<Point2d> &_vec, std::vector<GLfloat> &_out);

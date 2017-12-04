@@ -49,6 +49,16 @@ void CCanvas::initializeGL()
      * Before you can use the texture you need to initialize it by calling the setTexture() method.
      * Before you can use OBJ/PLY model, you need to initialize it by calling init() method.
      */
+    textureRock.setTexture();
+    textureGrass.setTexture();
+    textureTree.setTexture();
+    textureMill.setTexture();
+    texturePropeller.setTexture();
+    modelRock.init();
+    modelGrass.init();
+    modelTree.init();
+    modelMill.init();
+    modelPropeller.init();
     textureRocket.setTexture();
     textureBee.setTexture();
     textureBox.setTexture();
@@ -257,6 +267,60 @@ void CCanvas::paintGL()
 
     // Drawing the object with texture
 
+    // Rock
+    glPushMatrix();
+    textureRock.bind();
+    glScalef(0.1f, 0.1f, 0.1f);
+    glTranslatef(0.0f, 100.0f, 50.0f);
+    glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
+    modelRock.draw();
+    glPopMatrix();
+    textureRock.unbind();
+
+// Grass
+    glPushMatrix();
+    textureGrass.bind();
+    glScalef(0.1f, 0.1f, 0.1f);
+    glTranslatef(0.0f, 100.0f, 50.0f);
+    glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
+    modelGrass.draw();
+    glPopMatrix();
+    textureGrass.unbind();
+
+// Tree
+    glPushMatrix();
+    textureTree.bind();
+    glScalef(0.1f, 0.1f, 0.1f);
+    glTranslatef(0.0f, 100.0f, 50.0f);
+    glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
+    modelTree.draw();
+    glPopMatrix();
+    textureTree.unbind();
+
+// Mill
+    glPushMatrix();
+    textureMill.bind();
+    glScalef(0.1f, 0.1f, 0.1f);
+    glTranslatef(0.0f, 100.0f, 50.0f);
+    glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
+    modelMill.draw();
+    glPopMatrix();
+    textureMill.unbind();
+
+
+    // Propeller
+    glPushMatrix();
+//    glTranslatef(-prop.x(), -prop.y(), -prop.z());
+    texturePropeller.bind();
+//    glRotatef(tau, 0.0f, 0.0f, 1.0f);
+//    tau += 1.0f;
+//    glTranslatef(prop.x(), prop.y(), prop.z());
+    glScalef(0.1f, 0.1f, 0.1f);
+    glTranslatef(0.0f, 100.0f, 50.0f);
+    glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
+    modelPropeller.draw();
+    glPopMatrix();
+    texturePropeller.unbind();
 
     // You can stack new transformation matrix if you don't want
     // the previous transformations to apply on this object

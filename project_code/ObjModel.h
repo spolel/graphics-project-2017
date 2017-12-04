@@ -11,6 +11,8 @@ public:
     ObjModel(const std::string &_path);
     void init();
     void draw();
+    Point3d center;
+    Point3d getCenter();
 
 private:
     std::vector<GLfloat> fvertices;
@@ -19,6 +21,7 @@ private:
 
     GLuint vertexBuffer;
     GLuint uvBuffer;
+    GLuint normalBuffer;
 };
 
 #endif // SPHERE_H

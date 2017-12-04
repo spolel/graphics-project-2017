@@ -7,7 +7,7 @@
 #include "objloader.hpp"
 
 // Very, VERY simple OBJ loader.
-// Here is a short list of features a real function would provide : 
+// Here is a short list of features a real function would provide :
 // - Binary files. Reading a model should be just a few memcpy's away, not parsing a file at runtime. In short : OBJ is not very great.
 // - Animations & bones (includes bones weights)
 // - Multiple UVs
@@ -17,17 +17,30 @@
 // - Loading from memory, stream, etc
 
 bool loadOBJ(
-	const char * path, 
+	const char * path,
         std::vector<Point3d> & out_vertices,
         std::vector<Point2d> & out_uvs,
-        std::vector<Point3d> & out_normals
+        std::vector<Point3d> & out_normals,
+        Point3d center
 ){
 	printf("Loading OBJ file %s...\n", path);
 
 	std::vector<unsigned int> vertexIndices, uvIndices, normalIndices;
-        std::vector<Point3d> temp_vertices;
-        std::vector<Point2d> temp_uvs;
-        std::vector<Point3d> temp_normals;
+    std::vector<Point3d> temp_vertices;
+    std::vector<Point2d> temp_uvs;
+    std::vector<Point3d> temp_normals;
+
+    float min_x = std::numeric_limits<float>::max();
+    float min_y = std::numeric_limits<float>::max();
+    float min_z = std::numeric_limits<float>::max();
+
+    float max_x = std::numeric_limits<float>::min();
+    float max_y = std::numeric_limits<float>::min();
+    float max_z = std::numeric_limits<float>::min();
+
+    float cen_x;
+    float cen_y;
+    float cen_z;
 
 
 	FILE * file = fopen(path, "r");
@@ -46,10 +59,35 @@ bool loadOBJ(
 			break; // EOF = End Of File. Quit the loop.
 
 		// else : parse lineHeader
-		
+
 		if ( strcmp( lineHeader, "v" ) == 0 ){
                         float vx, vy, vz;
                         fscanf(file, "%f %f %f\n", &vx, &vy, &vz );
+                        if (vx < min_x)
+                        {
+                            min_x = vx;
+                        }
+                        if (vx > max_x)
+                        {
+                            max_x = vx;
+                        }
+                        if (vy < min_y)
+                        {
+                            min_y = vy;
+                        }
+                        if (vy > max_y)
+                        {
+                            max_y = vy;
+                        }
+                        if (vz < min_z)
+                        {
+                            min_z = vz;
+                        }
+                        if (vz > max_z)
+                        {
+                            max_z = vz;
+                        }
+
                         Point3d vertex(vx, vy, vz);
             temp_vertices.push_back(vertex);
                 }else if ( strcmp( lineHeader, "vt" ) == 0 ){
@@ -96,19 +134,26 @@ bool loadOBJ(
 		unsigned int vertexIndex = vertexIndices[i];
 		unsigned int uvIndex = uvIndices[i];
 		unsigned int normalIndex = normalIndices[i];
-		
+
 		// Get the attributes thanks to the index
                 Point3d vertex = temp_vertices[ vertexIndex-1 ];
                 Point2d uv = temp_uvs[ uvIndex-1 ];
                 Point3d normal = temp_normals[ normalIndex-1 ];
-		
+
 		// Put the attributes in buffers
 		out_vertices.push_back(vertex);
 		out_uvs     .push_back(uv);
 		out_normals .push_back(normal);
-	
+
 	}
 	fclose(file);
+
+    cen_x = (max_x - min_x)/2;
+    cen_y = (max_y - min_y)/2;
+    cen_z = (max_z - min_z)/2;
+
+    center = Point3d(cen_x, cen_y, cen_z);
+
 	return true;
 }
 
