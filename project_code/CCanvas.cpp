@@ -5,7 +5,7 @@
 
 using namespace std;
 
-double fast = 0.2;
+double fast = 0.8;
 
 //-----------------------------------------------------------------------------
 
@@ -34,12 +34,12 @@ void CCanvas::initializeGL()
      * light in eye coordinates, and attenuation is enabled. The default position is (0,0,1,0); thus,
      * the default light source is directional, parallel to, and in the direction of the -z axis.
      */
-    GLfloat lightpos[] = {0.0, 0.0, 1.0, 0.0};
+    GLfloat lightpos[] = {0.0, 0.0, 6.0, 100.0};
     glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
 
-    GLfloat lightAmb[]  = {0.3, 0.3, 0.3};
-    GLfloat lightDiff[] = {0.4, 0.4, 0.4};
-    GLfloat lightSpec[] = {0.5, 0.5, 0.5};
+    GLfloat lightAmb[]  = {10, 10, 10};
+    GLfloat lightDiff[] = {0.9, 0.9, 0.9};
+    GLfloat lightSpec[] = {0.9, 0.9, 0.9};
 
     glLightfv(GL_LIGHT0, GL_SPECULAR, lightSpec);
     glLightfv(GL_LIGHT0, GL_AMBIENT,  lightAmb);
@@ -51,8 +51,10 @@ void CCanvas::initializeGL()
      */
     textureRocket.setTexture();
     textureBee.setTexture();
+    textureBox.setTexture();
 
     modelRocket.init();
+    modelBox.init();
     modelBee.init();
 }
 
@@ -196,6 +198,7 @@ void CCanvas::setView(View _view) {
 void CCanvas::paintGL()
 {
     //glutKeyboardFunc(MyKeyboardFunc);
+    //cout << tau*2 << "\n";
     tau=tau+fast;
     // clear screen and depth buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -231,8 +234,9 @@ void CCanvas::paintGL()
         glVertex3f(0.0f, 0.0f, -6.0f);
         glVertex3f(0.0f, 0.0f, 6.0f);
     glEnd();
-    glEnable(GL_LIGHTING);
     */
+    //glEnable(GL_LIGHTING);
+
     /**** Setup and draw your objects ****/
 
     // You can freely enable/disable some of the lights in the scene as you wish
@@ -256,6 +260,15 @@ void CCanvas::paintGL()
 
     // You can stack new transformation matrix if you don't want
     // the previous transformations to apply on this object
+//BOX
+    glPushMatrix();
+    textureBox.bind();
+    glTranslated(0, 10, 0);
+    glScaled(360, 360, 360);
+    //glScaled(tau*2,tau*2,tau*2);
+    modelBox.draw();
+    textureBox.unbind();
+    glPopMatrix();
 
 //ROCKET
     glPushMatrix();
@@ -272,9 +285,7 @@ void CCanvas::paintGL()
     textureBee.bind();
     glTranslated(0, 20, 30);
     glRotated(90,0,1,0);
-    modelBee.draw();
+    //modelBee.draw();
     textureBee.unbind();
     glPopMatrix();
-
-
 }

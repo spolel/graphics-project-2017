@@ -28,7 +28,9 @@ public:
     explicit CCanvas(QWidget *parent = 0) : QGLWidget(parent),tau(0),
         textureRocket("../../../../project_code/train1.jpg"),
         textureBee("../../../../project_code/white.png"),
+        textureBox("../../../../project_code/night.png"),
         modelRocket("../../../../project_code/rocket.obj"),
+        modelBox("../../../../project_code/boxed.obj"),
         modelBee("../../../../project_code/boo.obj")
     {
         QTimer *timer = new QTimer(this);
@@ -69,9 +71,11 @@ private:
     // Models and textures
     Texture textureRocket;
     Texture textureBee;
+    Texture textureBox;
     // Model loaded from .obj format
     ObjModel modelRocket;
     ObjModel modelBee;
+    ObjModel modelBox;
 };
 
 #endif 
