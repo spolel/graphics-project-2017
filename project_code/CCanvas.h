@@ -34,6 +34,11 @@ public:
         textureTree("../../../../project_code/Models/Tree.png"),
         textureMill("../../../../project_code/Models/Mill.png"),
         texturePropeller("../../../../project_code/Models/Propeller.png"),
+        textureRock1("../../../../project_code/Models/rock_hard.jpg"),
+        textureGrass1("../../../../project_code/Models/Grass.png"),
+        textureTree1("../../../../project_code/Models/Tree.png"),
+        textureMill1("../../../../project_code/Models/Mill.png"),
+        texturePropeller1("../../../../project_code/Models/Propeller.png"),
         modelRocket("../../../../project_code/rocket.obj"),
         modelBee("../../../../project_code/boo.obj"),
         modelBox("../../../../project_code/Models/skyBOSS.obj"),
@@ -41,7 +46,12 @@ public:
         modelGrass("../../../../project_code/Models/Grass.obj"),
         modelTree("../../../../project_code/Models/Tree.obj"),
         modelMill("../../../../project_code/Models/Mill.obj"),
-        modelPropeller("../../../../project_code/Models/Propeller.obj")
+        modelPropeller("../../../../project_code/Models/Propeller.obj"),
+        modelRock1("../../../../project_code/Models/rock_hard.obj"),
+        modelGrass1("../../../../project_code/Models/Grass.obj"),
+        modelTree1("../../../../project_code/Models/Tree.obj"),
+        modelMill1("../../../../project_code/Models/Mill.obj"),
+        modelPropeller1("../../../../project_code/Models/Propeller.obj")
     {
         QTimer *timer = new QTimer(this);
         connect(timer, SIGNAL(timeout()), this, SLOT(updateGL()));
@@ -84,6 +94,11 @@ private:
     Texture textureTree;
     Texture textureMill;
     Texture texturePropeller;
+    Texture textureRock1;
+    Texture textureGrass1;
+    Texture textureTree1;
+    Texture textureMill1;
+    Texture texturePropeller1;
     Texture textureRocket;
     Texture textureBee;
     Texture textureBox;
@@ -93,6 +108,11 @@ private:
     ObjModel modelTree;
     ObjModel modelMill;
     ObjModel modelPropeller;
+    ObjModel modelRock1;
+    ObjModel modelGrass1;
+    ObjModel modelTree1;
+    ObjModel modelMill1;
+    ObjModel modelPropeller1;
     // Model loaded from .ply format
 //    PlyModel modelTrain2;
     ObjModel modelRocket;

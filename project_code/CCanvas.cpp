@@ -59,6 +59,19 @@ void CCanvas::initializeGL()
     modelTree.init();
     modelMill.init();
     modelPropeller.init();
+
+    textureRock1.setTexture();
+    textureGrass1.setTexture();
+    textureTree1.setTexture();
+    textureMill1.setTexture();
+    texturePropeller1.setTexture();
+    modelRock1.init();
+    modelGrass1.init();
+    modelTree1.init();
+    modelMill1.init();
+    modelPropeller1.init();
+
+
     textureRocket.setTexture();
     textureBee.setTexture();
     textureBox.setTexture();
@@ -276,7 +289,7 @@ void CCanvas::paintGL()
     glPushMatrix();
     textureRock.bind();
     glScalef(0.1f, 0.1f, 0.1f);
-    glTranslatef(0.0f, 100.0f, 50.0f);
+    glTranslatef(200.0f, 100.0f, -500.0f);
     glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
     glTranslatef(0.0f, sin(isle/30.0)*10.0f, 50.0f);
     modelRock.draw();
@@ -287,7 +300,7 @@ void CCanvas::paintGL()
     glPushMatrix();
     textureGrass.bind();
     glScalef(0.1f, 0.1f, 0.1f);
-    glTranslatef(0.0f, 100.0f, 50.0f);
+    glTranslatef(200.0f, 100.0f, -500.0f);
     glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
     glTranslatef(0.0f, sin(isle/30.0)*10.0f, 50.0f);
     modelGrass.draw();
@@ -298,7 +311,7 @@ void CCanvas::paintGL()
     glPushMatrix();
     textureTree.bind();
     glScalef(0.1f, 0.1f, 0.1f);
-    glTranslatef(0.0f, 100.0f, 50.0f);
+    glTranslatef(200.0f, 100.0f, -500.0f);
     glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
     glTranslatef(0.0f, sin(isle/30.0)*10.0f, 50.0f);
     modelTree.draw();
@@ -309,8 +322,8 @@ void CCanvas::paintGL()
     glPushMatrix();
     textureMill.bind();
     glScalef(0.1f, 0.1f, 0.1f);
-    glTranslatef(0.0f, 100.0f, 50.0f);
-    glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
+    glTranslatef(200.0f, 100.0f, -500.0f);
+    //glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
     glTranslatef(0.0f, sin(isle/30.0)*10.0f, 50.0f);
     modelMill.draw();
     glPopMatrix();
@@ -325,12 +338,77 @@ void CCanvas::paintGL()
     // tau += 1.0f;
     // glTranslatef(prop.x(), prop.y(), prop.z());
     glScalef(0.1f, 0.1f, 0.1f);
-    glTranslatef(0.0f, 100.0f, 50.0f);
-    glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
+    glTranslatef(200.0f, 100.0f, -500.0f);
     glTranslatef(0.0f, sin(isle/30.0)*10.0f, 50.0f);
+//    lookAt(1,0,0,  0,0,-1,  0,1,0);
+//    glRotated(tau, 1, 0, 0);
     modelPropeller.draw();
     glPopMatrix();
     texturePropeller.unbind();
+
+
+    // Rock1
+    glPushMatrix();
+    textureRock1.bind();
+    glScalef(0.1f, 0.1f, 0.1f);
+    glTranslatef(-90.0f, 100.0f, 100.0f);
+    glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
+    glTranslatef(-30.0f, sin(isle/30.0)*10.0f, 50.0f);
+    modelRock1.draw();
+    glPopMatrix();
+    textureRock1.unbind();
+
+    // Grass1
+    glPushMatrix();
+    textureGrass1.bind();
+    glScalef(0.1f, 0.1f, 0.1f);
+    glTranslatef(-90.0f, 100.0f, 100.0f);
+    glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
+   glTranslatef(-30.0f, sin(isle/30.0)*10.0f, 50.0f);
+    modelGrass1.draw();
+    glPopMatrix();
+    textureGrass1.unbind();
+
+    // Tree1
+    glPushMatrix();
+    textureTree1.bind();
+    glScalef(0.1f, 0.1f, 0.1f);
+    glTranslatef(-90.0f, 100.0f, 100.0f);
+    glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
+    glTranslatef(-30.0f, sin(isle/30.0)*10.0f, 50.0f);
+    modelTree1.draw();
+    glPopMatrix();
+    textureTree1.unbind();
+
+    // Mill1
+    glPushMatrix();
+    textureMill1.bind();
+    glScalef(0.1f, 0.1f, 0.1f);
+    glTranslatef(-90.0f, 100.0f, 100.0f);
+    //glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
+    glTranslatef(-30.0f, sin(isle/30.0)*10.0f, 50.0f);
+    modelMill1.draw();
+    glPopMatrix();
+    textureMill1.unbind();
+
+
+    // Propeller
+    glPushMatrix();
+    // glTranslatef(-prop.x(), -prop.y(), -prop.z());
+    texturePropeller1.bind();
+    // glRotatef(tau, 0.0f, 0.0f, 1.0f);
+    // tau += 1.0f;
+    // glTranslatef(prop.x(), prop.y(), prop.z());
+    glScalef(0.1f, 0.1f, 0.1f);
+    glTranslatef(-90.0f, 100.0f, 100.0f);
+    glTranslatef(-30.0f, sin(isle/30.0)*10.0f, 50.0f);
+//    lookAt(1,0,0,  0,0,-1,  0,1,0);
+//    glRotated(tau, 1, 0, 0);
+    modelPropeller1.draw();
+    glPopMatrix();
+    texturePropeller1.unbind();
+
+
 
     // You can stack new transformation matrix if you don't want
     // the previous transformations to apply on this object
@@ -348,9 +426,11 @@ void CCanvas::paintGL()
 //ROCKET
     glPushMatrix();
      textureRocket.bind();
-    glTranslated(0, 0, 0);
+     glScaled(0.7,0.7,0.7);
+    glTranslatef(-6.0f, 13.0f, 50.0f);
+    glTranslatef(0.0f, sin(isle/30.0)*1.5, 0.0f);
     //glRotated(0,0,0,0);
-    glRotated(0+tau,1,0,0);
+    glRotated(254,1,0,0);
     modelRocket.draw();
     textureRocket.unbind();
     glPopMatrix();
