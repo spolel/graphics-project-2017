@@ -31,12 +31,12 @@ public:
         textureBox("../../../../project_code/Models/skyBOSS.jpg"),
         textureRock("../../../../project_code/Models/rock_hard.jpg"),
         textureGrass("../../../../project_code/Models/Grass.png"),
-        textureTree("../../../../project_code/Models/Tree.png"),
+        textureTree("../../../../project_code/Models/tree_tex.png"),
         textureMill("../../../../project_code/Models/Mill.png"),
         texturePropeller("../../../../project_code/Models/Propeller.png"),
         textureRock1("../../../../project_code/Models/rock_hard.jpg"),
         textureGrass1("../../../../project_code/Models/Grass.png"),
-        textureTree1("../../../../project_code/Models/Tree.png"),
+        textureTree1("../../../../project_code/Models/tree_tex.png"),
         textureMill1("../../../../project_code/Models/Mill.png"),
         texturePropeller1("../../../../project_code/Models/Propeller.png"),
         modelRocket("../../../../project_code/rocket.obj"),
@@ -44,12 +44,12 @@ public:
         modelBox("../../../../project_code/Models/skyBOSS.obj"),
         modelRock("../../../../project_code/Models/rock_hard.obj"),
         modelGrass("../../../../project_code/Models/Grass.obj"),
-        modelTree("../../../../project_code/Models/Tree.obj"),
+        modelTree("../../../../project_code/Models/tree.obj"),
         modelMill("../../../../project_code/Models/mill_body.obj"),
         modelPropeller("../../../../project_code/Models/prop.obj"),
         modelRock1("../../../../project_code/Models/rock_hard.obj"),
         modelGrass1("../../../../project_code/Models/Grass.obj"),
-        modelTree1("../../../../project_code/Models/Tree.obj"),
+        modelTree1("../../../../project_code/Models/tree.obj"),
         modelMill1("../../../../project_code/Models/mill_body.obj"),
         modelPropeller1("../../../../project_code/Models/prop.obj")
     {
@@ -84,7 +84,8 @@ private:
     enum View {
         Perspective = 0,    // View the scene from a perspective (from above, from a side, or whatever)
         Cockpit,             // View the scene from the train cockpit (if you want, or whatever other view)
-        Behind
+        Rotation,
+        SecondIsle
     };
 
     void setView(View _view);

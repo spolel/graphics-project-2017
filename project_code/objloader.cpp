@@ -93,7 +93,7 @@ bool loadOBJ(
                 }else if ( strcmp( lineHeader, "vt" ) == 0 ){
                         float uvx, uvy;
                         fscanf(file, "%f %f\n", &uvx, &uvy );
-                        uvy = -uvy; // Invert V coordinate since we will only use DDS texture, which are inverted. Remove if you want to use TGA or BMP loaders.
+//                        uvy = -uvy; // Invert V coordinate since we will only use DDS texture, which are inverted. Remove if you want to use TGA or BMP loaders.
                         Point2d uv(uvx, uvy);
 			temp_uvs.push_back(uv);
 		}else if ( strcmp( lineHeader, "vn" ) == 0 ){
@@ -132,7 +132,7 @@ bool loadOBJ(
 
 		// Get the indices of its attributes
 		unsigned int vertexIndex = vertexIndices[i];
-		unsigned int uvIndex = uvIndices[i];
+        unsigned int uvIndex = uvIndices[i];
 		unsigned int normalIndex = normalIndices[i];
 
 		// Get the attributes thanks to the index
@@ -142,7 +142,7 @@ bool loadOBJ(
 
 		// Put the attributes in buffers
 		out_vertices.push_back(vertex);
-		out_uvs     .push_back(uv);
+        out_uvs     .push_back(uv);
 		out_normals .push_back(normal);
 
 	}

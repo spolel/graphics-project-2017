@@ -215,10 +215,14 @@ void CCanvas::setView(View _view) {
     case Cockpit:
         // Maybe you want to have an option to view the scene from the train cockpit, up to you
         break;
-    case Behind:
-        glTranslatef(0.0, 0.0, -80.0);
+    case Rotation:
+        glTranslatef(0.0, 0.0, -60.0);
         glRotatef(20.0f, 1.0f, 0.0f, 0.0f);
         glRotatef(tau/4, 0.0f, 1.0f, 0.0f);
+        break;
+     case SecondIsle:
+        glTranslatef(0.0, -20.0, 30.0);
+        glRotatef(30.0, 0.0, 1.0, 0.0);
     }
 }
 
@@ -242,7 +246,7 @@ void CCanvas::paintGL()
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
     // Setup the current view
-    setView(View::Behind);
+    setView(View::Perspective);
 
     // You can always change the light position here if you want
     GLfloat lightpos[] = {0.0f, 1000.0f, -1000.0f, 0.0f};
@@ -317,7 +321,7 @@ void CCanvas::paintGL()
     glPushMatrix();
     textureTree.bind();
     glScalef(0.1f, 0.1f, 0.1f);
-    glTranslatef(200.0f, 100.0f, -500.0f);
+    glTranslatef(220.0f, 145.0f, -490.0f);
     glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
     glTranslatef(0.0f, -sin(isle/40.0)*10.0f, 50.0f);
     modelTree.draw();
@@ -342,7 +346,7 @@ void CCanvas::paintGL()
     glPushMatrix();
     texturePropeller.bind();
     glScalef(0.1f, 0.1f, 0.1f);
-    glTranslatef(210.0f, 175.0f, -520.0f); // position of the model in the world
+    glTranslatef(211.0f, 175.0f, -523.0f); // position of the model in the world
     glTranslatef(0.0f, -sin(isle/40.0)*10.0f, 50.0f); // bobbing motion
     glRotatef(30.0f, 0.0f, 1.0f, 0.0f); // rotate the model to face the right direction
     glRotatef(tau, 1.0f, 0.0f, 0.0f); // rotation of the windmill propeller
@@ -377,7 +381,7 @@ void CCanvas::paintGL()
     glPushMatrix();
     textureTree1.bind();
     glScalef(0.1f, 0.1f, 0.1f);
-    glTranslatef(-90.0f, 100.0f, 100.0f);
+    glTranslatef(-75.0f, 145.0f, 130.0f);
     glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
     glTranslatef(-30.0f, sin(isle/30.0)*10.0f, 50.0f);
     modelTree1.draw();
@@ -419,12 +423,9 @@ void CCanvas::paintGL()
 
     glPushMatrix();
     textureBox.bind();
-    glRotatef(180.0f, 0.0f, 0.0f, 1.0f);
+//    glRotatef(180.0f, 0.0f, 0.0f, 1.0f);
     glTranslated(0, 10, 0);
     glScaled(180, 180, 180);
-    //glScaled(tau*2,tau*2,tau*2);
-//    GLfloat amb[]  = {1.0f, 1.0f, 1.0f};
-//    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, amb);
     modelBox.draw();
     textureBox.unbind();
     glPopMatrix();
@@ -437,7 +438,6 @@ void CCanvas::paintGL()
      glScaled(0.7,0.7,0.7);
     glTranslatef(-6.0f, 13.0f, 50.0f);
     glTranslatef(0.0f, sin(isle/30.0)*1.5, 0.0f);
-    //glRotated(0,0,0,0);
     glRotated(254,1,0,0);
     modelRocket.draw();
     textureRocket.unbind();
