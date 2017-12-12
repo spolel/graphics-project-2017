@@ -34,10 +34,10 @@ void CCanvas::initializeGL()
      * light in eye coordinates, and attenuation is enabled. The default position is (0,0,1,0); thus,
      * the default light source is directional, parallel to, and in the direction of the -z axis.
      */
-    GLfloat lightpos[] = {0.0, 0.0, 6.0, 100.0};
+    GLfloat lightpos[] = {0.0, 0.0, 1.0, 0.0};
     glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
 
-    GLfloat lightAmb[]  = {10, 10, 10};
+    GLfloat lightAmb[]  = {2.0, 2.0, 2.0};
     GLfloat lightDiff[] = {0.9, 0.9, 0.9};
     GLfloat lightSpec[] = {0.9, 0.9, 0.9};
 
@@ -215,6 +215,10 @@ void CCanvas::setView(View _view) {
     case Cockpit:
         // Maybe you want to have an option to view the scene from the train cockpit, up to you
         break;
+    case Behind:
+        glTranslatef(0.0, 0.0, -80.0);
+        glRotatef(20.0f, 1.0f, 0.0f, 0.0f);
+        glRotatef(tau/4, 0.0f, 1.0f, 0.0f);
     }
 }
 
@@ -238,50 +242,52 @@ void CCanvas::paintGL()
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
     // Setup the current view
-    setView(View::Perspective);
+    setView(View::Behind);
 
     // You can always change the light position here if you want
-    GLfloat lightpos[] = {0.0f, 0.0f, 10.0f, 0.0f};
+    GLfloat lightpos[] = {0.0f, 1000.0f, -1000.0f, 0.0f};
     glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
 
     /**** Axes in the global coordinate system ****/
-    /*
-    glDisable(GL_LIGHTING);
-    glColor3f(1.0f, 0.0f, 0.0f);
-    glBegin(GL_LINES);
-        glVertex3f(-6.0f, 0.0f, 0.0f);
-        glVertex3f(6.0f, 0.0f, 0.0f);
-    glEnd();
-    glColor3f(0.0f, 1.0f, 0.0f);
-    glBegin(GL_LINES);
-        glVertex3f(0.0f, -6.0f, 0.0f);
-        glVertex3f(0.0f, 6.0f, 0.0f);
-    glEnd();
-    glColor3f(0.0f, 0.0f, 1.0f);
-    glBegin(GL_LINES);
-        glVertex3f(0.0f, 0.0f, -6.0f);
-        glVertex3f(0.0f, 0.0f, 6.0f);
-    glEnd();
-    */
-    //glEnable(GL_LIGHTING);
+
+//    glDisable(GL_LIGHTING);
+//    glColor3f(1.0f, 0.0f, 0.0f);
+//    glBegin(GL_LINES);
+//        glVertex3f(-6.0f, 0.0f, 0.0f);
+//        glVertex3f(6.0f, 0.0f, 0.0f);
+//    glEnd();
+//    glColor3f(0.0f, 1.0f, 0.0f);
+//    glBegin(GL_LINES);
+//        glVertex3f(0.0f, -6.0f, 0.0f);
+//        glVertex3f(0.0f, 6.0f, 0.0f);
+//    glEnd();
+//    glColor3f(0.0f, 0.0f, 1.0f);
+//    glBegin(GL_LINES);
+//        glVertex3f(0.0f, 0.0f, -6.0f);
+//        glVertex3f(0.0f, 0.0f, 6.0f);
+//    glEnd();
+
+//    glEnable(GL_LIGHTING);
 
     /**** Setup and draw your objects ****/
 
     // You can freely enable/disable some of the lights in the scene as you wish
-    //glEnable(GL_LIGHT0);
-    //glDisable(GL_LIGHT1);
+//    glEnable(GL_LIGHT0);
+//    glDisable(GL_LIGHT1);
     // Before drawing an object, you can set its material properties
-    /*
-    glColor3f(0.5f, 0.5f, 0.5f);
-    GLfloat amb[]  = {0.1f, 0.1f, 0.1f};
-    GLfloat diff[] = {0.7f, 0.7f, 0.7f};
-    GLfloat spec[] = {0.1f, 0.1f, 0.1f};
-    GLfloat shin = 0.0001;
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, amb);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diff);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, spec);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, &shin);
-    */
+
+//    glColor3f(0.5f, 0.5f, 0.5f);
+//    GLfloat amb[]  = {1.0f, 1.0f, 1.0f};
+//    GLfloat diff[] = {0.7f, 0.7f, 0.7f};
+//    GLfloat spec[] = {0.1f, 0.1f, 0.1f};
+//    GLfloat shin = 0.0001;
+//    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, amb);
+//    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diff);
+//    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, spec);
+//    glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, &shin);
+
+//    lookAt(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+
 
     // Drawing the object with texture
 
@@ -323,7 +329,7 @@ void CCanvas::paintGL()
     glPushMatrix();
     textureMill.bind();
     glScalef(0.1f, 0.1f, 0.1f);
-    glTranslatef(225.0f, 160.0f, -500.0f);
+    glTranslatef(225.0f, 160.0f, -530.0f);
     //glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
     glTranslatef(0.0f, -sin(isle/40.0)*10.0f, 50.0f);
     glRotatef(30.0f, 0.0f, 1.0f, 0.0f);
@@ -336,8 +342,7 @@ void CCanvas::paintGL()
     glPushMatrix();
     texturePropeller.bind();
     glScalef(0.1f, 0.1f, 0.1f);
-    glTranslatef(208.0f, 175.0f, -500.0f); // position the model on the far right
-//    glTranslatef(-17.0f, 15.0f, 0.0f);
+    glTranslatef(210.0f, 175.0f, -520.0f); // position of the model in the world
     glTranslatef(0.0f, -sin(isle/40.0)*10.0f, 50.0f); // bobbing motion
     glRotatef(30.0f, 0.0f, 1.0f, 0.0f); // rotate the model to face the right direction
     glRotatef(tau, 1.0f, 0.0f, 0.0f); // rotation of the windmill propeller
@@ -408,16 +413,24 @@ void CCanvas::paintGL()
     // You can stack new transformation matrix if you don't want
     // the previous transformations to apply on this object
 //BOX
+    glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT);
+    glEnable(GL_COLOR_MATERIAL);
+    glColor3f(1.0f, 1.0f, 1.0f);
+
     glPushMatrix();
     textureBox.bind();
     glRotatef(180.0f, 0.0f, 0.0f, 1.0f);
     glTranslated(0, 10, 0);
     glScaled(180, 180, 180);
     //glScaled(tau*2,tau*2,tau*2);
+//    GLfloat amb[]  = {1.0f, 1.0f, 1.0f};
+//    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, amb);
     modelBox.draw();
     textureBox.unbind();
     glPopMatrix();
 
+    glColor3f(0.3, 0.3, 0.3);
+    glDisable(GL_COLOR_MATERIAL);
 //ROCKET
     glPushMatrix();
      textureRocket.bind();
