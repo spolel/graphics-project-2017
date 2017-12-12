@@ -291,7 +291,7 @@ void CCanvas::paintGL()
     glScalef(0.1f, 0.1f, 0.1f);
     glTranslatef(200.0f, 100.0f, -500.0f);
     glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
-    glTranslatef(0.0f, sin(isle/30.0)*10.0f, 50.0f);
+    glTranslatef(0.0f, -sin(isle/40.0)*10.0f, 50.0f);
     modelRock.draw();
     glPopMatrix();
     textureRock.unbind();
@@ -302,7 +302,7 @@ void CCanvas::paintGL()
     glScalef(0.1f, 0.1f, 0.1f);
     glTranslatef(200.0f, 100.0f, -500.0f);
     glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
-    glTranslatef(0.0f, sin(isle/30.0)*10.0f, 50.0f);
+    glTranslatef(0.0f, -sin(isle/40.0)*10.0f, 50.0f);
     modelGrass.draw();
     glPopMatrix();
     textureGrass.unbind();
@@ -313,18 +313,20 @@ void CCanvas::paintGL()
     glScalef(0.1f, 0.1f, 0.1f);
     glTranslatef(200.0f, 100.0f, -500.0f);
     glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
-    glTranslatef(0.0f, sin(isle/30.0)*10.0f, 50.0f);
+    glTranslatef(0.0f, -sin(isle/40.0)*10.0f, 50.0f);
     modelTree.draw();
     glPopMatrix();
     textureTree.unbind();
+
 
     // Mill
     glPushMatrix();
     textureMill.bind();
     glScalef(0.1f, 0.1f, 0.1f);
-    glTranslatef(200.0f, 100.0f, -500.0f);
+    glTranslatef(225.0f, 160.0f, -500.0f);
     //glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
-    glTranslatef(0.0f, sin(isle/30.0)*10.0f, 50.0f);
+    glTranslatef(0.0f, -sin(isle/40.0)*10.0f, 50.0f);
+    glRotatef(30.0f, 0.0f, 1.0f, 0.0f);
     modelMill.draw();
     glPopMatrix();
     textureMill.unbind();
@@ -332,16 +334,13 @@ void CCanvas::paintGL()
 
     // Propeller
     glPushMatrix();
-    // glTranslatef(-prop.x(), -prop.y(), -prop.z());
     texturePropeller.bind();
-    // glRotatef(tau, 0.0f, 0.0f, 1.0f);
-    // tau += 1.0f;
-    // glTranslatef(prop.x(), prop.y(), prop.z());
     glScalef(0.1f, 0.1f, 0.1f);
-    glTranslatef(200.0f, 100.0f, -500.0f);
-    glTranslatef(0.0f, sin(isle/30.0)*10.0f, 50.0f);
-//    lookAt(1,0,0,  0,0,-1,  0,1,0);
-//    glRotated(tau, 1, 0, 0);
+    glTranslatef(208.0f, 175.0f, -500.0f); // position the model on the far right
+//    glTranslatef(-17.0f, 15.0f, 0.0f);
+    glTranslatef(0.0f, -sin(isle/40.0)*10.0f, 50.0f); // bobbing motion
+    glRotatef(30.0f, 0.0f, 1.0f, 0.0f); // rotate the model to face the right direction
+    glRotatef(tau, 1.0f, 0.0f, 0.0f); // rotation of the windmill propeller
     modelPropeller.draw();
     glPopMatrix();
     texturePropeller.unbind();
@@ -364,7 +363,7 @@ void CCanvas::paintGL()
     glScalef(0.1f, 0.1f, 0.1f);
     glTranslatef(-90.0f, 100.0f, 100.0f);
     glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
-   glTranslatef(-30.0f, sin(isle/30.0)*10.0f, 50.0f);
+    glTranslatef(-30.0f, sin(isle/30.0)*10.0f, 50.0f);
     modelGrass1.draw();
     glPopMatrix();
     textureGrass1.unbind();
@@ -384,9 +383,9 @@ void CCanvas::paintGL()
     glPushMatrix();
     textureMill1.bind();
     glScalef(0.1f, 0.1f, 0.1f);
-    glTranslatef(-90.0f, 100.0f, 100.0f);
-    //glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
+    glTranslatef(-65.0f, 160.0f, 100.0f);
     glTranslatef(-30.0f, sin(isle/30.0)*10.0f, 50.0f);
+    glRotatef(180.0f, 0.0f, 1.0f, 0.0f);
     modelMill1.draw();
     glPopMatrix();
     textureMill1.unbind();
@@ -394,16 +393,12 @@ void CCanvas::paintGL()
 
     // Propeller
     glPushMatrix();
-    // glTranslatef(-prop.x(), -prop.y(), -prop.z());
     texturePropeller1.bind();
-    // glRotatef(tau, 0.0f, 0.0f, 1.0f);
-    // tau += 1.0f;
-    // glTranslatef(prop.x(), prop.y(), prop.z());
     glScalef(0.1f, 0.1f, 0.1f);
-    glTranslatef(-90.0f, 100.0f, 100.0f);
+//    glTranslatef(-17.0f, 15.0f, 0.0f);
+    glTranslatef(-50.0f, 175.0f, 100.0f);
     glTranslatef(-30.0f, sin(isle/30.0)*10.0f, 50.0f);
-//    lookAt(1,0,0,  0,0,-1,  0,1,0);
-//    glRotated(tau, 1, 0, 0);
+    glRotatef(-tau, 1.0f, 0.0f, 0.0f);
     modelPropeller1.draw();
     glPopMatrix();
     texturePropeller1.unbind();

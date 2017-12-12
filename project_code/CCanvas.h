@@ -45,13 +45,13 @@ public:
         modelRock("../../../../project_code/Models/rock_hard.obj"),
         modelGrass("../../../../project_code/Models/Grass.obj"),
         modelTree("../../../../project_code/Models/Tree.obj"),
-        modelMill("../../../../project_code/Models/Mill.obj"),
-        modelPropeller("../../../../project_code/Models/Propeller.obj"),
+        modelMill("../../../../project_code/Models/mill_body.obj"),
+        modelPropeller("../../../../project_code/Models/prop.obj"),
         modelRock1("../../../../project_code/Models/rock_hard.obj"),
         modelGrass1("../../../../project_code/Models/Grass.obj"),
         modelTree1("../../../../project_code/Models/Tree.obj"),
-        modelMill1("../../../../project_code/Models/Mill.obj"),
-        modelPropeller1("../../../../project_code/Models/Propeller.obj")
+        modelMill1("../../../../project_code/Models/mill_body.obj"),
+        modelPropeller1("../../../../project_code/Models/prop.obj")
     {
         QTimer *timer = new QTimer(this);
         connect(timer, SIGNAL(timeout()), this, SLOT(updateGL()));
