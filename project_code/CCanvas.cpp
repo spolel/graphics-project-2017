@@ -115,61 +115,53 @@ void CCanvas::glPerspective(const GLdouble fovy, const GLdouble aspect, const GL
     delete[] mat;
 }
 
-void CCanvas::lookAt(const GLdouble eyex,
-                     const GLdouble eyey,
-                     const GLdouble eyez,
-                     const GLdouble centerx,
-                     const GLdouble centery,
-                     const GLdouble centerz,
-                     const GLdouble upx,
-                     const GLdouble upy,
-                     const GLdouble upz)
+void CCanvas::lookAt(const GLdouble eyeX,
+                        const GLdouble eyeY,						// VP on the course slides
+                        const GLdouble eyeZ,
+                        const GLdouble centerX,
+                        const GLdouble centerY,					// q on the course slides
+                        const GLdouble centerZ,
+                        const GLdouble upX,
+                        const GLdouble upY,							// VUP on the course slides
+                        const GLdouble upZ )
 {
-    GLdouble *mat = new GLdouble[16];
 
-    // TODO: add computation for the lookat here!
-    Point3d X, Y, Z;
+    Point3d VP(eyeX, eyeY, eyeZ);
+    Point3d q(centerX, centerY, centerZ);
+    Point3d VUP(upX, upY, upZ);
+    Point3d VPN = VP-q;
 
-    // create new coordinate system
-    Z = Point3d(eyex - centerx, eyey - centery, eyez - centerz);
-    Z.normalize();
+    Point3d p1 = VP;
+    Point3d z1 = VPN.normalized();
+    Point3d x1 = (VUP^z1).normalized();
+    Point3d y1 = z1^x1;
 
-    // compute Y and X
-    Y = Point3d(upx, upy, upz);
-    X = Y ^ Z;
+    GLdouble *mat = new GLdouble[16];							// remember: column-major order!
 
-    // recompute X
-    Y = Z ^ X;
+    mat[0]=x1.x();
+    mat[1]=y1.x();
+    mat[2]=z1.x();
+    mat[3]=0;
 
-    // normalize
-    X.normalize();
-    Y.normalize();
+    mat[4]=x1.y();
+    mat[5]=y1.y();
+    mat[6]=z1.y();
+    mat[7]=0;
 
-    Point3d eye(eyex, eyey, eyez);
+    mat[8]=x1.z();
+    mat[9]=y1.z();
+    mat[10]=z1.z();
+    mat[11]=0;
 
-    mat[0] = X.x();
-    mat[1] = X.y();
-    mat[2] = X.z();
-    mat[3] = -X * eye;
-
-    mat[4] = Y.x();
-    mat[5] = Y.y();
-    mat[6] = Y.z();
-    mat[7] = -Y * eye;
-
-    mat[8]  = Z.x();
-    mat[9]  = Z.y();
-    mat[10] = Z.z();
-    mat[11] = -Z * eye;
-
-    mat[12] = 0.0;
-    mat[13] = 0.0;
-    mat[14] = 0.0;
-    mat[15] = 1.0;
+    mat[12]=-x1*p1;
+    mat[13]=-y1*p1;
+    mat[14]=-z1*p1;
+    mat[15]=1;
 
     glMultMatrixd(mat);
 
     delete[] mat;
+
 }
 
 void CCanvas::resizeGL(int width, int height)
@@ -290,7 +282,7 @@ void CCanvas::paintGL()
 //    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, spec);
 //    glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, &shin);
 
-//    lookAt(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+    lookAt(sin(tau*0.015)*40, 10.0, cos(tau*0.015)*40, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 
 
     // Drawing the object with texture
