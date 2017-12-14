@@ -203,14 +203,13 @@ void CCanvas::resizeGL(int width, int height)
 void CCanvas::setView(int view) {
     switch(view) {
     case 1:
-        glTranslatef(0.0, -20.0, -40.0);
+        lookAt(10.0, 20.0, 50.0, 0.0, 20.0, -20.0, 0.0, 1.0, 0.0);
         break;
     case 2:
         lookAt(sin(tau*0.015)*60, 40.0, cos(tau*0.015)*60 - 20, 0.0, 20.0, -20.0, 0.0, 1.0, 0.0);
         break;
      case 3:
-        glTranslatef(0.0, -20.0, 30.0);
-        glRotatef(30.0, 0.0, 1.0, 0.0);
+        lookAt(20.0, 20.0, 10.0, -15.0, 20.0, 10.0, 0.0, 1.0, 0.0);
         break;
     }
 }
@@ -408,7 +407,6 @@ void CCanvas::paintGL()
     glPushMatrix();
     texturePropeller1.bind();
     glScalef(0.1f, 0.1f, 0.1f);
-//    glTranslatef(-17.0f, 15.0f, 0.0f);
     glTranslatef(-50.0f, 175.0f, 100.0f);
     glTranslatef(-30.0f, sin(isle/30.0)*10.0f, 50.0f);
     glRotatef(-tau, 1.0f, 0.0f, 0.0f);
