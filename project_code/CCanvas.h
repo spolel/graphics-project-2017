@@ -62,6 +62,7 @@ protected:
     void initializeGL();
     void resizeGL(int width, int height);
     void paintGL();
+    void keyPressEvent(QKeyEvent *e);
 
 private:
     double tau;
@@ -81,14 +82,16 @@ private:
                        const GLdouble zFar);
 
 
-    enum View {
-        Perspective = 0,    // View the scene from a perspective (from above, from a side, or whatever)
-        Cockpit,             // View the scene from the train cockpit (if you want, or whatever other view)
-        Rotation,
-        SecondIsle
-    };
+//    enum View {
+//        Perspective = 0,    // View the scene from a perspective (from above, from a side, or whatever)
+//        Cockpit,             // View the scene from the train cockpit (if you want, or whatever other view)
+//        Rotation,
+//        SecondIsle
+//    };
 
-    void setView(View _view);
+    int view = 1;
+
+    void setView(int view);
 
     // Models and textures
     Texture textureRock;

@@ -14,6 +14,8 @@ double fast = 0.8;
 void CCanvas::initializeGL()
 {
 
+    this->setFocusPolicy(Qt::StrongFocus);
+
     glClearColor(0.0f, 0.0f, 0.0f, 0.5f);			   // black background
     glClearDepth(1.0f);								   // depth buffer setup
     glEnable(GL_DEPTH_TEST);						   // enables depth testing
@@ -198,25 +200,36 @@ void CCanvas::resizeGL(int width, int height)
 
 //-----------------------------------------------------------------------------
 
-void CCanvas::setView(View _view) {
-    switch(_view) {
-    case Perspective:
+void CCanvas::setView(int view) {
+    switch(view) {
+    case 1:
         glTranslatef(0.0, -20.0, -40.0);
-        //glRotatef(45.0f, 0.0f, 1.0f, 0.0f);
         break;
-    case Cockpit:
-        // Maybe you want to have an option to view the scene from the train cockpit, up to you
+    case 2:
+        lookAt(sin(tau*0.015)*60, 40.0, cos(tau*0.015)*60 - 20, 0.0, 20.0, -20.0, 0.0, 1.0, 0.0);
         break;
-    case Rotation:
-        glTranslatef(0.0, 0.0, -60.0);
-        glRotatef(20.0f, 1.0f, 0.0f, 0.0f);
-        glRotatef(tau/4, 0.0f, 1.0f, 0.0f);
-        break;
-     case SecondIsle:
+     case 3:
         glTranslatef(0.0, -20.0, 30.0);
         glRotatef(30.0, 0.0, 1.0, 0.0);
+        break;
     }
 }
+
+void CCanvas::keyPressEvent(QKeyEvent *e)
+{
+    switch(e->key()) {
+    case Qt::Key_1:
+        view = 1;
+        break;
+    case Qt::Key_2:
+        view = 2;
+        break;
+    case Qt::Key_3:
+        view = 3;
+        break;
+    }
+}
+
 
 void CCanvas::paintGL()
 {
@@ -238,7 +251,7 @@ void CCanvas::paintGL()
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
     // Setup the current view
-    setView(View::Perspective);
+    setView(view);
 
     // You can always change the light position here if you want
     GLfloat lightpos[] = {0.0f, 1000.0f, -1000.0f, 0.0f};
@@ -282,7 +295,6 @@ void CCanvas::paintGL()
 //    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, spec);
 //    glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, &shin);
 
-    lookAt(sin(tau*0.015)*40, 10.0, cos(tau*0.015)*40, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 
 
     // Drawing the object with texture
