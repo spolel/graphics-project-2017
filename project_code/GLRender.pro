@@ -22,7 +22,8 @@ HEADERS += ./Base.h \
            ./ObjModel.h \
            ./PlyModel.h \
            ./objloader.hpp \
-           ./tinyply.h
+           ./tinyply.h \
+    Island.h
 
 # Source files
 SOURCES += ./CCanvas.cpp \
@@ -32,7 +33,8 @@ SOURCES += ./CCanvas.cpp \
            ./ObjModel.cpp \
            ./PlyModel.cpp \
            ./objloader.cpp \
-           ./tinyply.cpp
+           ./tinyply.cpp \
+    Island.cpp
 
 # Forms
 FORMS += ./GLRender.ui

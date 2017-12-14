@@ -15,6 +15,8 @@
 #include "ObjModel.h"
 #include "PlyModel.h"
 
+#include "Island.h"
+
 using namespace std;
 
 /************************************************************************/

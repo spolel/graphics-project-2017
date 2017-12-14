@@ -7,6 +7,8 @@ using namespace std;
 
 double fast = 0.8;
 
+Island *island1;
+
 //-----------------------------------------------------------------------------
 
 
@@ -51,6 +53,7 @@ void CCanvas::initializeGL()
      * Before you can use the texture you need to initialize it by calling the setTexture() method.
      * Before you can use OBJ/PLY model, you need to initialize it by calling init() method.
      */
+#if 0
     textureRock.setTexture();
     textureGrass.setTexture();
     textureTree.setTexture();
@@ -61,6 +64,9 @@ void CCanvas::initializeGL()
     modelTree.init();
     modelMill.init();
     modelPropeller.init();
+#elif 1
+    island1 = new Island(textureRock,textureGrass,textureTree,textureMill,texturePropeller,modelRock,modelGrass,modelTree,modelMill,modelPropeller);
+#endif
 
     textureRock1.setTexture();
     textureGrass1.setTexture();
@@ -240,6 +246,10 @@ void CCanvas::paintGL()
     //glutKeyboardFunc(MyKeyboardFunc);
     //cout << tau*2 << "\n";
     tau=tau+fast;
+
+    island1->incrementTau(fast);
+    island1->incrementIsle();
+
     // clear screen and depth buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -298,6 +308,7 @@ void CCanvas::paintGL()
 
     // Drawing the object with texture
 
+#if 0
     // Rock
     glPushMatrix();
     textureRock.bind();
@@ -357,7 +368,10 @@ void CCanvas::paintGL()
     glPopMatrix();
     texturePropeller.unbind();
 
+#elif 1
+    island1->draw();
 
+#endif
     // Rock1
     glPushMatrix();
     textureRock1.bind();
