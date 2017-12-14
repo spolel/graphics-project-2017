@@ -56,6 +56,7 @@ void CCanvas::initializeGL()
     textureTree.setTexture();
     textureMill.setTexture();
     texturePropeller.setTexture();
+
     modelRock.init();
     modelGrass.init();
     modelTree.init();
@@ -81,6 +82,11 @@ void CCanvas::initializeGL()
     modelRocket.init();
     modelBox.init();
     modelBee.init();
+
+    textureSeagull.setTexture();
+    seagullBody.init();
+    seagullLeft.init();
+    seagullRight.init();
 }
 
 //-----------------------------------------------------------------------------
@@ -445,12 +451,28 @@ void CCanvas::paintGL()
     textureRocket.unbind();
     glPopMatrix();
 
-//BEE
+    //SEAGULL BODY
     glPushMatrix();
-    textureBee.bind();
-    glTranslated(0, 20, 30);
-    glRotated(90,0,1,0);
-    //modelBee.draw();
-    textureBee.unbind();
+    textureSeagull.bind();
+    //glTranslated(0, 20, 30);
+    seagullBody.draw();
+    textureSeagull.unbind();
     glPopMatrix();
+
+    //SEAGULL RIGHT WING
+    glPushMatrix();
+    textureSeagull.bind();
+    //glTranslated(0, 20, 30);
+    seagullRight.draw();
+    textureSeagull.unbind();
+    glPopMatrix();
+
+    //SEAGULL LEFT WING
+    glPushMatrix();
+    textureSeagull.bind();
+    //glTranslated(0, 20, 30);
+    seagullLeft.draw();
+    textureSeagull.unbind();
+    glPopMatrix();
+
 }

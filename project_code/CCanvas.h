@@ -39,6 +39,7 @@ public:
         textureTree1("../../../../project_code/Models/tree_tex.png"),
         textureMill1("../../../../project_code/Models/Mill.png"),
         texturePropeller1("../../../../project_code/Models/Propeller.png"),
+        textureSeagull("../../../../project_code/Models/seagull_texture.png"),
         modelRocket("../../../../project_code/rocket.obj"),
         modelBee("../../../../project_code/boo.obj"),
         modelBox("../../../../project_code/Models/skyBOSS.obj"),
@@ -51,7 +52,11 @@ public:
         modelGrass1("../../../../project_code/Models/Grass.obj"),
         modelTree1("../../../../project_code/Models/tree.obj"),
         modelMill1("../../../../project_code/Models/mill_body.obj"),
-        modelPropeller1("../../../../project_code/Models/prop.obj")
+        modelPropeller1("../../../../project_code/Models/prop.obj"),
+        //SEAGULL
+        seagullBody("../../../../project_code/Models/seagull_body.obj"),
+        seagullLeft("../../../../project_code/Models/seagull_left_wing.obj"),
+        seagullRight("../../../../project_code/Models/seagull_right_wing.obj")
     {
         QTimer *timer = new QTimer(this);
         connect(timer, SIGNAL(timeout()), this, SLOT(updateGL()));
@@ -107,6 +112,7 @@ private:
     Texture textureRocket;
     Texture textureBee;
     Texture textureBox;
+    Texture textureSeagull;
     // Model loaded from .obj format
     ObjModel modelRock;
     ObjModel modelGrass;
@@ -123,6 +129,9 @@ private:
     ObjModel modelRocket;
     ObjModel modelBee;
     ObjModel modelBox;
+    ObjModel seagullRight;
+    ObjModel seagullLeft;
+    ObjModel seagullBody;
 };
 
 #endif
