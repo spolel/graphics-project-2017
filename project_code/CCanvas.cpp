@@ -462,7 +462,10 @@ void CCanvas::paintGL()
     //SEAGULL RIGHT WING
     glPushMatrix();
     textureSeagull.bind();
-    //glTranslated(0, 20, 30);
+    // x = speed of flapping
+    // y = angle covered of flapping
+    // z = offset where flapping start
+    glRotatef(sin(-tau*0.1)*50 - 25, 1.0f, 0.0f, 0.0f);
     seagullRight.draw();
     textureSeagull.unbind();
     glPopMatrix();
@@ -470,7 +473,11 @@ void CCanvas::paintGL()
     //SEAGULL LEFT WING
     glPushMatrix();
     textureSeagull.bind();
-    //glTranslated(0, 20, 30);
+    //sin(tau*x)*y + z
+    // x = speed of flapping
+    // y = angle covered of flapping
+    // z = offset where flapping start
+    glRotatef(sin(tau*0.1)*50 + 25, 1.0f, 0.0f, 0.0f);
     seagullLeft.draw();
     textureSeagull.unbind();
     glPopMatrix();
