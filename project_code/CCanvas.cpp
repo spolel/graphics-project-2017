@@ -95,8 +95,8 @@ void CCanvas::initializeGL()
     ufoLeg3.init();
 
     textureBigIsland.setTexture();
-    bigIsland.init();
-
+    modelBigIsland.init();
+    modelForest.init();
 }
 
 //-----------------------------------------------------------------------------
@@ -557,12 +557,22 @@ void CCanvas::paintGL()
 
     //std:cout<<tempTau <<"\n";
 
+    //BIG ISLAND
+
     glPushMatrix();
     textureBigIsland.bind();
     glTranslated(20,15 + -sin(isle/40.0),-50);
     glScalef(4.0f,4.0f,4.0f);
-    bigIsland.draw();
+    modelBigIsland.draw();
     textureBigIsland.unbind();
+    glPopMatrix();
+
+    glPushMatrix();
+    textureTree.bind();
+    glTranslated(20,15 + -sin(isle/40.0),-50);
+    glScalef(4.0f,4.0f,4.0f);
+    modelForest.draw();
+    textureTree.unbind();
     glPopMatrix();
 
     tau=tau+1.0;

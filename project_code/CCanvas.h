@@ -70,7 +70,8 @@ public:
         //BIG ISLAND
         textureBigIsland("../../../../project_code/Textures/mountain-island-texture.png"),
 
-        bigIsland("../../../../project_code/Models/big_isle.obj")
+        modelBigIsland("../../../../project_code/Models/mountain-island-model.obj"),
+        modelForest("../../../../project_code/Models/forest-model.obj")
 
     {
         QTimer *timer = new QTimer(this);
@@ -162,7 +163,8 @@ private:
 
     //BIG ISLAND
     Texture textureBigIsland;
-    ObjModel bigIsland;
+    ObjModel modelBigIsland;
+    ObjModel modelForest;
 
 
 };
