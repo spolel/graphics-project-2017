@@ -554,7 +554,7 @@ void CCanvas::paintGL()
     textureUfo.unbind();
     glPopMatrix();
 
-    std:cout<<tempTau <<"\n";
+    //std:cout<<tempTau <<"\n";
 
     glPushMatrix();
     textureBigIsland.bind();
