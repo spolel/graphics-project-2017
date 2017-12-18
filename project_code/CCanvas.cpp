@@ -81,6 +81,10 @@ void CCanvas::initializeGL()
     seagullLeft.init();
     seagullRight.init();
 
+
+    textureBigIsland.setTexture();
+    bigIsland.init();
+
 }
 
 //-----------------------------------------------------------------------------
@@ -426,5 +430,12 @@ void CCanvas::paintGL()
     textureSeagull.unbind();
     glPopMatrix();
 
+
+    glPushMatrix();
+    textureBigIsland.bind();
+    glTranslated(20,15 + -sin(isle/40.0),-50);
+    bigIsland.draw();
+    textureBigIsland.unbind();
+    glPopMatrix();
 
 }
