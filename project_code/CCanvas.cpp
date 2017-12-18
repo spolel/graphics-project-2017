@@ -81,6 +81,14 @@ void CCanvas::initializeGL()
     seagullLeft.init();
     seagullRight.init();
 
+    textureSeagull1.setTexture();
+    seagullBody1.init();
+    seagullLeft1.init();
+    seagullRight1.init();
+
+    textureBigIsland.setTexture();
+    bigIsland.init();
+
 }
 
 //-----------------------------------------------------------------------------
@@ -214,6 +222,9 @@ void CCanvas::setView(int view) {
     case 4:
         lookAt(sin(tau*0.015)*60, 23, cos(tau*0.015)*60, sin(tau*0.015 + 0.1)*60, 21, cos(tau*0.015 + 0.1)*60, 0.0, 1.0, 0.0);
         break;
+    case 5:
+        lookAt(sin(tau*0.015 - 0.1)*60, 23, cos(tau*0.015/2 - 0.1)*60, sin(tau*0.015)*60, 21, cos(tau*0.015/2)*60, 0.0, 1.0, 0.0);
+        break;
     }
 }
 
@@ -231,6 +242,9 @@ void CCanvas::keyPressEvent(QKeyEvent *e)
         break;
     case Qt::Key_4:
         view = 4;
+        break;
+    case Qt::Key_5:
+        view = 5;
         break;
     }
 }
@@ -371,8 +385,14 @@ void CCanvas::paintGL()
     //SEAGULL BODY
     glPushMatrix();
     textureSeagull.bind();
-    glTranslated(sin(tau*0.015)*60.0, 20, cos(tau*0.015)*60.0);
-    glRotatef(tau*0.85944f, 0.0f, 1.0f, 0.0f);
+    glTranslated(sin(tau*0.015)*60.0, 20, cos(tau*0.015/2)*60.0);
+    if (cos(tau*0.015/2) > 0) {
+        glRotatef(tau*0.85944f, 0.0f, 1.0f, 0.0f);
+    }
+    else {
+        glRotatef(-tau*0.85944f, 0.0f, 1.0f, 0.0f);
+    }
+//    glRotatef(tau*0.85944f, 0.0f, 1.0f, 0.0f);
     seagullBody.draw();
     textureSeagull.unbind();
     glPopMatrix();
@@ -380,8 +400,13 @@ void CCanvas::paintGL()
     //SEAGULL RIGHT WING
     glPushMatrix();
     textureSeagull.bind();
-    glTranslated(sin(tau*0.015)*60.0, 20, cos(tau*0.015)*60.0);
-    glRotatef(tau*0.85944f, 0.0f, 1.0f, 0.0f);
+    glTranslated(sin(tau*0.015)*60.0, 20, cos(tau*0.015/2)*60.0);
+    if (cos(tau*0.015/2) > 0) {
+        glRotatef(tau*0.85944f, 0.0f, 1.0f, 0.0f);
+    }
+    else {
+        glRotatef(-tau*0.85944f, 0.0f, 1.0f, 0.0f);
+    }
     // x = speed of flapping
     // y = angle covered of flapping
     // z = offset where flapping start
@@ -393,8 +418,13 @@ void CCanvas::paintGL()
     //SEAGULL LEFT WING
     glPushMatrix();
     textureSeagull.bind();
-    glTranslated(sin(tau*0.015)*60.0, 20, cos(tau*0.015)*60.0);
-    glRotatef(tau*0.85944f, 0.0f, 1.0f, 0.0f);
+    glTranslated(sin(tau*0.015)*60.0, 20, cos(tau*0.015/2)*60.0);
+    if (cos(tau*0.015/2) > 0) {
+        glRotatef(tau*0.85944f, 0.0f, 1.0f, 0.0f);
+    }
+    else {
+        glRotatef(-tau*0.85944f, 0.0f, 1.0f, 0.0f);
+    }
     //sin(tau*x)*y + z
     // x = speed of flapping
     // y = angle covered of flapping
@@ -404,5 +434,52 @@ void CCanvas::paintGL()
     textureSeagull.unbind();
     glPopMatrix();
 
+
+
+    //SEAGULL1 BODY
+    glPushMatrix();
+    textureSeagull.bind();
+    glTranslated(sin(tau*0.015)*20.0, 10, 0.0f);
+    glRotatef(tau*0.85944f, 0.0f, 1.0f, 0.0f);
+    seagullBody.draw();
+    textureSeagull.unbind();
+    glPopMatrix();
+
+    //SEAGULL1 RIGHT WING
+    glPushMatrix();
+    textureSeagull.bind();
+    glTranslated(sin(tau*0.015)*20.0, 10, 0.0f);
+    // x = speed of flapping
+    // y = angle covered of flapping
+    // z = offset where flapping start
+    glRotatef(tau*0.85944f, 0.0f, 1.0f, 0.0f);
+    glRotatef(sin(-tau*0.1)*50 - 25, 1.0f, 0.0f, 0.0f);
+    seagullRight.draw();
+    textureSeagull.unbind();
+    glPopMatrix();
+
+    //SEAGULL1 LEFT WING
+    glPushMatrix();
+    textureSeagull.bind();
+    glTranslated(sin(tau*0.015)*20.0, 10, 0.0f);
+    //sin(tau*x)*y + z
+    // x = speed of flapping
+    // y = angle covered of flapping
+    // z = offset where flapping start
+    //glRotatef(sin(tau*0.1)*50 + 25, 1.0f, 0.0f, 0.0f);
+    glRotatef(tau*0.85944f, 0.0f, 1.0f, 0.0f);
+    glRotatef(sin(tau*0.1)*50 + 25, 1.0f, 0.0f, 0.0f);
+    seagullLeft.draw();
+    textureSeagull.unbind();
+    glPopMatrix();
+
+
+    glPushMatrix();
+    textureBigIsland.bind();
+    glTranslated(20,15 + -sin(isle/40.0),-50);
+    glScalef(4.0f,4.0f,4.0f);
+    bigIsland.draw();
+    textureBigIsland.unbind();
+    glPopMatrix();
 
 }
