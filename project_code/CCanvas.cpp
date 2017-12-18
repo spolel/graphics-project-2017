@@ -506,6 +506,7 @@ void CCanvas::paintGL()
     textureUfo.bind();
     if(start){
         glTranslated(20,tempTau/40 + beginpos,-40);
+        glRotated(tempTau,0,1,0);
     }
     else{
         glTranslated(20,17 + -sin(isle/40.0),-40);
