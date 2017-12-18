@@ -69,6 +69,14 @@ public:
         seagullLeft1("../../../../project_code/Models/seagull-left-wing1.obj"),
         seagullRight1("../../../../project_code/Models/seagull-right-wing1.obj"),
 
+        //UFO
+        textureUfo("../../../../project_code/Textures/ufo-texture.png"),
+
+        ufoBody("../../../../project_code/Models/ufo-model.obj"),
+        ufoLeg1("../../../../project_code/Models/ufo-leg-1-model.obj"),
+        ufoLeg2("../../../../project_code/Models/ufo-leg-2-model.obj"),
+        ufoLeg3("../../../../project_code/Models/ufo-leg-3-model.obj"),
+
         //BIG ISLAND
         textureBigIsland("../../../../project_code/Textures/mountain-island-texture.png"),
 
@@ -143,6 +151,8 @@ private:
     Texture textureSeagull;
     Texture textureSeagull1;
 
+    Texture textureUfo;
+
     ObjModel seagullBody;
     ObjModel seagullLeft;
     ObjModel seagullRight;
@@ -150,6 +160,11 @@ private:
     ObjModel seagullBody1;
     ObjModel seagullLeft1;
     ObjModel seagullRight1;
+
+    ObjModel ufoBody;
+    ObjModel ufoLeg1;
+    ObjModel ufoLeg2;
+    ObjModel ufoLeg3;
 
     //BIG ISLAND
     Texture textureBigIsland;

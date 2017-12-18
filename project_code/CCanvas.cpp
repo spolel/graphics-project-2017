@@ -86,6 +86,12 @@ void CCanvas::initializeGL()
     seagullLeft1.init();
     seagullRight1.init();
 
+    textureUfo.setTexture();
+    ufoBody.init();
+    ufoLeg1.init();
+    ufoLeg2.init();
+    ufoLeg3.init();
+
     textureBigIsland.setTexture();
     bigIsland.init();
 
@@ -471,6 +477,30 @@ void CCanvas::paintGL()
     glRotatef(sin(tau*0.1)*50 + 25, 1.0f, 0.0f, 0.0f);
     seagullLeft.draw();
     textureSeagull.unbind();
+    glPopMatrix();
+
+    //UFO BODY
+    glPushMatrix();
+    textureUfo.bind();
+    glTranslated(20,17 + -sin(isle/40.0),-40);
+    ufoBody.draw();
+    textureUfo.unbind();
+    glPopMatrix();
+
+    //UFO LEG 1
+    glPushMatrix();
+    glTranslated(20,17 + -sin(isle/40.0),-40);
+    ufoLeg1.draw();
+    glPopMatrix();
+    //UFO LEG 2
+    glPushMatrix();
+    glTranslated(20,17 + -sin(isle/40.0),-40);
+    ufoLeg2.draw();
+    glPopMatrix();
+    //UFO LEG 3
+    glPushMatrix();
+    glTranslated(20,17 + -sin(isle/40.0),-40);
+    ufoLeg3.draw();
     glPopMatrix();
 
 
