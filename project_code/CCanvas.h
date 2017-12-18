@@ -62,6 +62,13 @@ public:
         seagullLeft("../../../../project_code/Models/seagull-left-wing.obj"),
         seagullRight("../../../../project_code/Models/seagull-right-wing.obj"),
 
+        //SEAGULL 1
+        textureSeagull1("../../../../project_code/Textures/seagull-texture1.png"),
+
+        seagullBody1("../../../../project_code/Models/seagull-body1.obj"),
+        seagullLeft1("../../../../project_code/Models/seagull-left-wing1.obj"),
+        seagullRight1("../../../../project_code/Models/seagull-right-wing1.obj"),
+
         //BIG ISLAND
         textureBigIsland("../../../../project_code/Textures/mountain-island-texture.png"),
 
@@ -134,10 +141,15 @@ private:
 //    ObjModel modelPropeller1;
 
     Texture textureSeagull;
+    Texture textureSeagull1;
 
     ObjModel seagullBody;
     ObjModel seagullLeft;
     ObjModel seagullRight;
+
+    ObjModel seagullBody1;
+    ObjModel seagullLeft1;
+    ObjModel seagullRight1;
 
     //BIG ISLAND
     Texture textureBigIsland;
