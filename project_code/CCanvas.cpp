@@ -6,6 +6,8 @@
 using namespace std;
 
 // double fast = 0.8;
+static double isle = 0.0;
+double legRetract = 0;
 
 //-----------------------------------------------------------------------------
 
@@ -253,7 +255,10 @@ void CCanvas::keyPressEvent(QKeyEvent *e)
         view = 5;
         break;
     case Qt::Key_S:
-        start = true;
+        if(!start){
+            start = true;
+            beginpos = 17 + -sin(isle/40.0);
+        }
         break;
     }
 }
@@ -261,7 +266,6 @@ void CCanvas::keyPressEvent(QKeyEvent *e)
 
 void CCanvas::paintGL()
 {
-    static double isle = 0.0;
     isle = isle + 1.0;
 
     // cout << "Tau: " << tau << std::endl;
@@ -500,9 +504,11 @@ void CCanvas::paintGL()
     //UFO BODY
     glPushMatrix();
     textureUfo.bind();
-    glTranslated(20,17 + -sin(isle/40.0),-40);
     if(start){
-        glTranslated(0,tempTau/50,0);
+        glTranslated(20,tempTau/40 + beginpos,-40);
+    }
+    else{
+        glTranslated(20,17 + -sin(isle/40.0),-40);
     }
     ufoBody.draw();
     textureUfo.unbind();
@@ -511,34 +517,44 @@ void CCanvas::paintGL()
     //UFO LEG 1
     glPushMatrix();
     textureUfo.bind();
-    glTranslated(20,17 + -sin(isle/40.0),-40);
-    if(start){
-        glTranslated(0,tempTau/50,0);
+    if(start && tempTau < 250){
+        glTranslated(20,tempTau/40 + beginpos+retract,-40);
+        ufoLeg1.draw();
     }
-    ufoLeg1.draw();
+    else if(!start){
+        glTranslated(20,17 + -sin(isle/40.0),-40);
+        ufoLeg1.draw();
+    }
     textureUfo.unbind();
     glPopMatrix();
     //UFO LEG 2
     glPushMatrix();
     textureUfo.bind();
-    glTranslated(20,17 + -sin(isle/40.0),-40);
-    if(start){
-        glTranslated(0,tempTau/50,0);
+    if(start && tempTau < 250){
+        glTranslated(20,tempTau/40 + beginpos + retract,-40);
+        ufoLeg2.draw();
     }
-    ufoLeg2.draw();
+    else if(!start){
+        glTranslated(20,17 + -sin(isle/40.0),-40);
+        ufoLeg2.draw();
+    }
     textureUfo.unbind();
     glPopMatrix();
     //UFO LEG 3
     glPushMatrix();
     textureUfo.bind();
-    glTranslated(20,17 + -sin(isle/40.0),-40);
-    if(start){
-        glTranslated(0,tempTau/50,0);
+    if(start && tempTau < 250){
+        glTranslated(20,tempTau/40 + beginpos + retract,-40);
+        ufoLeg3.draw();
     }
-    ufoLeg3.draw();
+    else if(!start){
+        glTranslated(20,17 + -sin(isle/40.0),-40);
+        ufoLeg3.draw();
+    }
     textureUfo.unbind();
     glPopMatrix();
 
+    std:cout<<tempTau <<"\n";
 
     glPushMatrix();
     textureBigIsland.bind();
@@ -551,6 +567,7 @@ void CCanvas::paintGL()
     tau=tau+1.0;
     if(start){
         tempTau +=1;
+        retract = retract+0.007;
     }
 
 }
