@@ -44,16 +44,6 @@ public:
         texturePropeller("../../../../project_code/Textures/propeller-texture.png"),
         modelPropeller("../../../../project_code/Models/propeller-model.obj"),
 
-        // island 2
-//        textureRock1("../../../../project_code/Textures/island-texture.png"),
-//        textureTree1("../../../../project_code/Textures/tree-texture.png"),
-//        textureMill1("../../../../project_code/Textures/mill-texture.png"),
-//        texturePropeller1("../../../../project_code/Textures/propeller-texture.png"),
-
-//        modelRock1("../../../../project_code/Models/island-model.obj"),
-//        modelTree1("../../../../project_code/Models/tree-low-1.obj"),
-//        modelMill1("../../../../project_code/Models/mill-model.obj"),
-//        modelPropeller1("../../../../project_code/Models/propeller-model.obj"),
 
         //SEAGULL
         textureSeagull("../../../../project_code/Textures/seagull-texture.png"),
@@ -63,11 +53,11 @@ public:
         seagullRight("../../../../project_code/Models/seagull-right-wing.obj"),
 
         //SEAGULL 1
-        textureSeagull1("../../../../project_code/Textures/seagull-texture1.png"),
+        textureSeagull1("../../../../project_code/Textures/seagull-texture.png"),
 
-        seagullBody1("../../../../project_code/Models/seagull-body1.obj"),
-        seagullLeft1("../../../../project_code/Models/seagull-left-wing1.obj"),
-        seagullRight1("../../../../project_code/Models/seagull-right-wing1.obj"),
+        seagullBody1("../../../../project_code/Models/seagull-body.obj"),
+        seagullLeft1("../../../../project_code/Models/seagull-left-wing.obj"),
+        seagullRight1("../../../../project_code/Models/seagull-right-wing.obj"),
 
         //UFO
         textureUfo("../../../../project_code/Textures/ufo-texture.png"),
