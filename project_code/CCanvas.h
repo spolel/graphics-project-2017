@@ -71,7 +71,7 @@ public:
         textureBigIsland("../../../../project_code/Textures/mountain-island-texture.png"),
 
         modelBigIsland("../../../../project_code/Models/mountain-island-model.obj"),
-        modelForest("../../../../project_code/Models/forest-model.obj")
+        modelForest("../../../../project_code/Models/forest-model.obj"),
 
         //clouds
         textureCloud("../../../../project_code/Textures/cloud-texture.png"),
@@ -175,7 +175,6 @@ private:
 
     Texture textureCloud;
     ObjModel modelCloud;
-
 
 };
 
