@@ -120,6 +120,8 @@ private:
 //    };
 
     int view = 1;
+    bool start = false;
+    double tempTau = 0;
 
     void setView(int view);
 
