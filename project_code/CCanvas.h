@@ -26,15 +26,22 @@ class CCanvas : public QGLWidget
 
 public:
     explicit CCanvas(QWidget *parent = 0) : QGLWidget(parent),tau(0),
-        textureRocket("../../../../project_code/train1.jpg"),
+
+        // island 1
+        modelRock("../../../../project_code/Models/island.obj"),
+        textureRock("../../../../project_code/Models/island_texture.png"),
+
+        // island 2
+        modelRock1("../../../../project_code/Models/island.obj"),
+        textureRock1("../../../../project_code/Models/island_texture.png"),
+
         textureBee("../../../../project_code/white.png"),
         textureBox("../../../../project_code/Models/GRADIENT5.png"),
-        textureRock("../../../../project_code/Models/rock_hard.jpg"),
+        textureRocket("../../../../project_code/train1.jpg"),
         textureGrass("../../../../project_code/Models/Grass.png"),
         textureTree("../../../../project_code/Models/tree_tex.png"),
         textureMill("../../../../project_code/Models/Mill.png"),
         texturePropeller("../../../../project_code/Models/Propeller.png"),
-        textureRock1("../../../../project_code/Models/rock_hard.jpg"),
         textureGrass1("../../../../project_code/Models/Grass.png"),
         textureTree1("../../../../project_code/Models/tree_tex.png"),
         textureMill1("../../../../project_code/Models/Mill.png"),
@@ -43,12 +50,10 @@ public:
         modelRocket("../../../../project_code/rocket.obj"),
         modelBee("../../../../project_code/boo.obj"),
         modelBox("../../../../project_code/Models/SkyBO22.obj"),
-        modelRock("../../../../project_code/Models/rock_hard.obj"),
         modelGrass("../../../../project_code/Models/Grass.obj"),
         modelTree("../../../../project_code/Models/tree.obj"),
         modelMill("../../../../project_code/Models/mill_body.obj"),
         modelPropeller("../../../../project_code/Models/prop.obj"),
-        modelRock1("../../../../project_code/Models/rock_hard.obj"),
         modelGrass1("../../../../project_code/Models/Grass.obj"),
         modelTree1("../../../../project_code/Models/tree.obj"),
         modelMill1("../../../../project_code/Models/mill_body.obj"),

@@ -21,7 +21,7 @@ void CCanvas::initializeGL()
     glEnable(GL_DEPTH_TEST);						   // enables depth testing
     glDepthFunc(GL_LEQUAL);							   // the type of depth testing to do
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST); // really nice perspective calculations
-    glShadeModel(GL_SMOOTH);
+    glShadeModel(GL_FLAT);
 
     // One light source
     glEnable(GL_LIGHTING);
@@ -313,10 +313,10 @@ void CCanvas::paintGL()
     // Rock
     glPushMatrix();
     textureRock.bind();
-    glScalef(0.1f, 0.1f, 0.1f);
-    glTranslatef(200.0f, 100.0f, -500.0f);
-    glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
-    glTranslatef(0.0f, -sin(isle/40.0)*10.0f, 50.0f);
+    glScalef(1.0f, 1.0f, 1.0f);
+    //glTranslatef(200.0f, 100.0f, -500.0f);
+    //glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
+    glTranslatef(0.0f, -sin(isle/40.0), 0.0f);
     modelRock.draw();
     glPopMatrix();
     textureRock.unbind();
@@ -373,7 +373,7 @@ void CCanvas::paintGL()
     // Rock1
     glPushMatrix();
     textureRock1.bind();
-    glScalef(0.1f, 0.1f, 0.1f);
+    glScalef(0.2f, 0.2f, 0.2f);
     glTranslatef(-90.0f, 100.0f, 100.0f);
     glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
     glTranslatef(-30.0f, sin(isle/30.0)*10.0f, 50.0f);
