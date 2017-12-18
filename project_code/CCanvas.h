@@ -36,8 +36,8 @@ public:
         modelRock("../../../../project_code/Models/island-model.obj"),
 
         textureTree("../../../../project_code/Textures/tree-texture.png"),
-        modelTree("../../../../project_code/Models/tree-low-1.obj")
- #if 0
+        modelTree("../../../../project_code/Models/tree-low-1-model.obj"),
+
         textureMill("../../../../project_code/Textures/mill-texture.png"),
         modelMill("../../../../project_code/Models/mill-model.obj"),
 
@@ -56,13 +56,12 @@ public:
 //        modelPropeller1("../../../../project_code/Models/propeller-model.obj"),
 
         //SEAGULL
-        textureSeagull("../../../../project_code/Models/seagull-texture.png"),
+        textureSeagull("../../../../project_code/Textures/seagull-texture.png"),
 
         seagullBody("../../../../project_code/Models/seagull-body.obj"),
         seagullLeft("../../../../project_code/Models/seagull-left-wing.obj"),
         seagullRight("../../../../project_code/Models/seagull-right-wing.obj")
 
-#endif
     {
         QTimer *timer = new QTimer(this);
         connect(timer, SIGNAL(timeout()), this, SLOT(updateGL()));
@@ -113,7 +112,7 @@ private:
 
     Texture textureTree;
     ObjModel modelTree;
-#if 0
+
     Texture textureMill;
     ObjModel modelMill;
 
@@ -134,7 +133,7 @@ private:
     ObjModel seagullBody;
     ObjModel seagullLeft;
     ObjModel seagullRight;
-#endif
+
 
 };
 

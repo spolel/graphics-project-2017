@@ -60,7 +60,7 @@ void CCanvas::initializeGL()
 
     textureTree.setTexture();
     modelTree.init();
-#if 0
+
     textureMill.setTexture();
     modelMill.init();
 
@@ -80,7 +80,7 @@ void CCanvas::initializeGL()
     seagullBody.init();
     seagullLeft.init();
     seagullRight.init();
-#endif
+
 }
 
 //-----------------------------------------------------------------------------
@@ -338,40 +338,32 @@ void CCanvas::paintGL()
     // Tree
     glPushMatrix();
     textureTree.bind();
-    glScalef(0.1f, 0.1f, 0.1f);
-    glTranslatef(220.0f, 145.0f, -490.0f);
-    glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
-    glTranslatef(0.0f, -sin(isle/40.0)*10.0f, 50.0f);
+    glTranslatef(0.0f, -sin(isle/40.0), 0.0f);
     modelTree.draw();
     glPopMatrix();
     textureTree.unbind();
 
-#if 0
+
     // Mill
     glPushMatrix();
     textureMill.bind();
-    glScalef(0.1f, 0.1f, 0.1f);
-    glTranslatef(225.0f, 160.0f, -530.0f);
-    //glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
-    glTranslatef(0.0f, -sin(isle/40.0)*10.0f, 50.0f);
-    glRotatef(30.0f, 0.0f, 1.0f, 0.0f);
+    glTranslatef(0.0f, -sin(isle/40.0), 0.0f);
     modelMill.draw();
     glPopMatrix();
     textureMill.unbind();
 
 
+
     // Propeller
     glPushMatrix();
     texturePropeller.bind();
-    glScalef(0.1f, 0.1f, 0.1f);
-    glTranslatef(211.0f, 175.0f, -523.0f); // position of the model in the world
-    glTranslatef(0.0f, -sin(isle/40.0)*10.0f, 50.0f); // bobbing motion
+    glTranslatef(0.0f, 10.0f, 0.0f);
     glRotatef(30.0f, 0.0f, 1.0f, 0.0f); // rotate the model to face the right direction
     glRotatef(tau, 1.0f, 0.0f, 0.0f); // rotation of the windmill propeller
+    //glTranslatef(0.0f, -sin(isle/40.0), 0.0f);
     modelPropeller.draw();
     glPopMatrix();
     texturePropeller.unbind();
-
 
     //SEAGULL BODY
     glPushMatrix();
@@ -409,6 +401,5 @@ void CCanvas::paintGL()
     textureSeagull.unbind();
     glPopMatrix();
 
-#endif
 
 }
