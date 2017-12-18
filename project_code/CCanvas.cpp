@@ -477,6 +477,7 @@ void CCanvas::paintGL()
     glPushMatrix();
     textureBigIsland.bind();
     glTranslated(20,15 + -sin(isle/40.0),-50);
+    glScalef(4.0f,4.0f,4.0f);
     bigIsland.draw();
     textureBigIsland.unbind();
     glPopMatrix();
