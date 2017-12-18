@@ -489,18 +489,24 @@ void CCanvas::paintGL()
 
     //UFO LEG 1
     glPushMatrix();
+    textureUfo.bind();
     glTranslated(20,17 + -sin(isle/40.0),-40);
     ufoLeg1.draw();
+    textureUfo.unbind();
     glPopMatrix();
     //UFO LEG 2
     glPushMatrix();
+    textureUfo.bind();
     glTranslated(20,17 + -sin(isle/40.0),-40);
     ufoLeg2.draw();
+    textureUfo.unbind();
     glPopMatrix();
     //UFO LEG 3
     glPushMatrix();
+    textureUfo.bind();
     glTranslated(20,17 + -sin(isle/40.0),-40);
     ufoLeg3.draw();
+    textureUfo.unbind();
     glPopMatrix();
 
 
