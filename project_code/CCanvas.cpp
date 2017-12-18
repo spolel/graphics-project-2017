@@ -81,6 +81,16 @@ void CCanvas::initializeGL()
     seagullLeft.init();
     seagullRight.init();
 
+    textureSeagull1.setTexture();
+    seagullBody1.init();
+    seagullLeft1.init();
+    seagullRight1.init();
+
+    textureUfo.setTexture();
+    ufoBody.init();
+    ufoLeg1.init();
+    ufoLeg2.init();
+    ufoLeg3.init();
 
     textureBigIsland.setTexture();
     bigIsland.init();
@@ -432,9 +442,79 @@ void CCanvas::paintGL()
     glPopMatrix();
 
 
+
+    //SEAGULL1 BODY
+    glPushMatrix();
+    textureSeagull.bind();
+    glTranslated(sin(tau*0.015)*20.0, 10, 0.0f);
+    glRotatef(tau*0.85944f, 0.0f, 1.0f, 0.0f);
+    seagullBody.draw();
+    textureSeagull.unbind();
+    glPopMatrix();
+
+    //SEAGULL1 RIGHT WING
+    glPushMatrix();
+    textureSeagull.bind();
+    glTranslated(sin(tau*0.015)*20.0, 10, 0.0f);
+    // x = speed of flapping
+    // y = angle covered of flapping
+    // z = offset where flapping start
+    glRotatef(tau*0.85944f, 0.0f, 1.0f, 0.0f);
+    glRotatef(sin(-tau*0.1)*50 - 25, 1.0f, 0.0f, 0.0f);
+    seagullRight.draw();
+    textureSeagull.unbind();
+    glPopMatrix();
+
+    //SEAGULL1 LEFT WING
+    glPushMatrix();
+    textureSeagull.bind();
+    glTranslated(sin(tau*0.015)*20.0, 10, 0.0f);
+    //sin(tau*x)*y + z
+    // x = speed of flapping
+    // y = angle covered of flapping
+    // z = offset where flapping start
+    //glRotatef(sin(tau*0.1)*50 + 25, 1.0f, 0.0f, 0.0f);
+    glRotatef(tau*0.85944f, 0.0f, 1.0f, 0.0f);
+    glRotatef(sin(tau*0.1)*50 + 25, 1.0f, 0.0f, 0.0f);
+    seagullLeft.draw();
+    textureSeagull.unbind();
+    glPopMatrix();
+
+    //UFO BODY
+    glPushMatrix();
+    textureUfo.bind();
+    glTranslated(20,17 + -sin(isle/40.0),-40);
+    ufoBody.draw();
+    textureUfo.unbind();
+    glPopMatrix();
+
+    //UFO LEG 1
+    glPushMatrix();
+    textureUfo.bind();
+    glTranslated(20,17 + -sin(isle/40.0),-40);
+    ufoLeg1.draw();
+    textureUfo.unbind();
+    glPopMatrix();
+    //UFO LEG 2
+    glPushMatrix();
+    textureUfo.bind();
+    glTranslated(20,17 + -sin(isle/40.0),-40);
+    ufoLeg2.draw();
+    textureUfo.unbind();
+    glPopMatrix();
+    //UFO LEG 3
+    glPushMatrix();
+    textureUfo.bind();
+    glTranslated(20,17 + -sin(isle/40.0),-40);
+    ufoLeg3.draw();
+    textureUfo.unbind();
+    glPopMatrix();
+
+
     glPushMatrix();
     textureBigIsland.bind();
     glTranslated(20,15 + -sin(isle/40.0),-50);
+    glScalef(4.0f,4.0f,4.0f);
     bigIsland.draw();
     textureBigIsland.unbind();
     glPopMatrix();
