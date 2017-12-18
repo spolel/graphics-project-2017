@@ -27,41 +27,42 @@ class CCanvas : public QGLWidget
 public:
     explicit CCanvas(QWidget *parent = 0) : QGLWidget(parent),tau(0),
 
+        //skybox
+        textureSkyBox("../../../../project_code/Textures/skybox-texture.png"),
+        modelSkyBox("../../../../project_code/Models/skybox-model.obj"),
+
         // island 1
-        modelRock("../../../../project_code/Models/island.obj"),
-        textureRock("../../../../project_code/Models/island_texture.png"),
+        textureRock("../../../../project_code/Textures/island-texture.png"),
+        modelRock("../../../../project_code/Models/island-model.obj"),
+
+        textureTree("../../../../project_code/Textures/tree-texture.png"),
+        modelTree("../../../../project_code/Models/tree-low-1.obj")
+ #if 0
+        textureMill("../../../../project_code/Textures/mill-texture.png"),
+        modelMill("../../../../project_code/Models/mill-model.obj"),
+
+        texturePropeller("../../../../project_code/Textures/propeller-texture.png"),
+        modelPropeller("../../../../project_code/Models/propeller-model.obj"),
 
         // island 2
-        modelRock1("../../../../project_code/Models/island.obj"),
-        textureRock1("../../../../project_code/Models/island_texture.png"),
+//        textureRock1("../../../../project_code/Textures/island-texture.png"),
+//        textureTree1("../../../../project_code/Textures/tree-texture.png"),
+//        textureMill1("../../../../project_code/Textures/mill-texture.png"),
+//        texturePropeller1("../../../../project_code/Textures/propeller-texture.png"),
 
-        textureBee("../../../../project_code/white.png"),
-        textureBox("../../../../project_code/Models/GRADIENT5.png"),
-        textureRocket("../../../../project_code/train1.jpg"),
-        textureGrass("../../../../project_code/Models/Grass.png"),
-        textureTree("../../../../project_code/Models/tree_tex.png"),
-        textureMill("../../../../project_code/Models/Mill.png"),
-        texturePropeller("../../../../project_code/Models/Propeller.png"),
-        textureGrass1("../../../../project_code/Models/Grass.png"),
-        textureTree1("../../../../project_code/Models/tree_tex.png"),
-        textureMill1("../../../../project_code/Models/Mill.png"),
-        texturePropeller1("../../../../project_code/Models/Propeller.png"),
-        textureSeagull("../../../../project_code/Models/seagull_texture.png"),
-        modelRocket("../../../../project_code/rocket.obj"),
-        modelBee("../../../../project_code/boo.obj"),
-        modelBox("../../../../project_code/Models/SkyBO22.obj"),
-        modelGrass("../../../../project_code/Models/Grass.obj"),
-        modelTree("../../../../project_code/Models/tree.obj"),
-        modelMill("../../../../project_code/Models/mill_body.obj"),
-        modelPropeller("../../../../project_code/Models/prop.obj"),
-        modelGrass1("../../../../project_code/Models/Grass.obj"),
-        modelTree1("../../../../project_code/Models/tree.obj"),
-        modelMill1("../../../../project_code/Models/mill_body.obj"),
-        modelPropeller1("../../../../project_code/Models/prop.obj"),
+//        modelRock1("../../../../project_code/Models/island-model.obj"),
+//        modelTree1("../../../../project_code/Models/tree-low-1.obj"),
+//        modelMill1("../../../../project_code/Models/mill-model.obj"),
+//        modelPropeller1("../../../../project_code/Models/propeller-model.obj"),
+
         //SEAGULL
-        seagullBody("../../../../project_code/Models/seagull_body.obj"),
-        seagullLeft("../../../../project_code/Models/seagull_left_wing.obj"),
-        seagullRight("../../../../project_code/Models/seagull_right_wing.obj")
+        textureSeagull("../../../../project_code/Models/seagull-texture.png"),
+
+        seagullBody("../../../../project_code/Models/seagull-body.obj"),
+        seagullLeft("../../../../project_code/Models/seagull-left-wing.obj"),
+        seagullRight("../../../../project_code/Models/seagull-right-wing.obj")
+
+#endif
     {
         QTimer *timer = new QTimer(this);
         connect(timer, SIGNAL(timeout()), this, SLOT(updateGL()));
@@ -104,39 +105,37 @@ private:
     void setView(int view);
 
     // Models and textures
+    Texture textureSkyBox;
+    ObjModel modelSkyBox;
+
     Texture textureRock;
-    Texture textureGrass;
-    Texture textureTree;
-    Texture textureMill;
-    Texture texturePropeller;
-    Texture textureRock1;
-    Texture textureGrass1;
-    Texture textureTree1;
-    Texture textureMill1;
-    Texture texturePropeller1;
-    Texture textureRocket;
-    Texture textureBee;
-    Texture textureBox;
-    Texture textureSeagull;
-    // Model loaded from .obj format
     ObjModel modelRock;
-    ObjModel modelGrass;
+
+    Texture textureTree;
     ObjModel modelTree;
+#if 0
+    Texture textureMill;
     ObjModel modelMill;
+
+    Texture texturePropeller;
     ObjModel modelPropeller;
-    ObjModel modelRock1;
-    ObjModel modelGrass1;
-    ObjModel modelTree1;
-    ObjModel modelMill1;
-    ObjModel modelPropeller1;
-    // Model loaded from .ply format
-//    PlyModel modelTrain2;
-    ObjModel modelRocket;
-    ObjModel modelBee;
-    ObjModel modelBox;
-    ObjModel seagullRight;
-    ObjModel seagullLeft;
+
+//    Texture textureRock1;
+//    Texture textureTree1;
+//    Texture textureMill1;
+//    Texture texturePropeller1;
+//    ObjModel modelRock1;
+//    ObjModel modelTree1;
+//    ObjModel modelMill1;
+//    ObjModel modelPropeller1;
+
+    Texture textureSeagull;
+
     ObjModel seagullBody;
+    ObjModel seagullLeft;
+    ObjModel seagullRight;
+#endif
+
 };
 
 #endif

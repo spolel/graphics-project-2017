@@ -51,42 +51,36 @@ void CCanvas::initializeGL()
      * Before you can use the texture you need to initialize it by calling the setTexture() method.
      * Before you can use OBJ/PLY model, you need to initialize it by calling init() method.
      */
-    textureRock.setTexture();
-    textureGrass.setTexture();
-    textureTree.setTexture();
-    textureMill.setTexture();
-    texturePropeller.setTexture();
 
+    textureSkyBox.setTexture();
+    modelSkyBox.init();
+
+    textureRock.setTexture();
     modelRock.init();
-    modelGrass.init();
+
+    textureTree.setTexture();
     modelTree.init();
+#if 0
+    textureMill.setTexture();
     modelMill.init();
+
+    texturePropeller.setTexture();
     modelPropeller.init();
 
-    textureRock1.setTexture();
-    textureGrass1.setTexture();
-    textureTree1.setTexture();
-    textureMill1.setTexture();
-    texturePropeller1.setTexture();
-    modelRock1.init();
-    modelGrass1.init();
-    modelTree1.init();
-    modelMill1.init();
-    modelPropeller1.init();
-
-
-    textureRocket.setTexture();
-    textureBee.setTexture();
-    textureBox.setTexture();
-
-    modelRocket.init();
-    modelBox.init();
-    modelBee.init();
+//    textureRock1.setTexture();
+//    textureTree1.setTexture();
+//    textureMill1.setTexture();
+//    texturePropeller1.setTexture();
+//    modelRock1.init();
+//    modelTree1.init();
+//    modelMill1.init();
+//    modelPropeller1.init();
 
     textureSeagull.setTexture();
     seagullBody.init();
     seagullLeft.init();
     seagullRight.init();
+#endif
 }
 
 //-----------------------------------------------------------------------------
@@ -310,6 +304,26 @@ void CCanvas::paintGL()
 
     // Drawing the object with texture
 
+    // You can stack new transformation matrix if you don't want
+    // the previous transformations to apply on this object
+//SKYBOX
+    glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT);
+    glEnable(GL_COLOR_MATERIAL);
+    glColor3f(1.0f, 1.0f, 1.0f);
+
+    glPushMatrix();
+    textureSkyBox.bind();
+//    glRotatef(180.0f, 0.0f, 0.0f, 1.0f);
+    glTranslated(0, 10, 0);
+    glScaled(180, 180, 180);
+    modelSkyBox.draw();
+    textureSkyBox.unbind();
+    glPopMatrix();
+
+    glColor3f(0.3, 0.3, 0.3);
+    glDisable(GL_COLOR_MATERIAL);
+
+
     // Rock
     glPushMatrix();
     textureRock.bind();
@@ -320,17 +334,6 @@ void CCanvas::paintGL()
     modelRock.draw();
     glPopMatrix();
     textureRock.unbind();
-
-    // Grass
-    glPushMatrix();
-    textureGrass.bind();
-    glScalef(0.1f, 0.1f, 0.1f);
-    glTranslatef(200.0f, 100.0f, -500.0f);
-    glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
-    glTranslatef(0.0f, -sin(isle/40.0)*10.0f, 50.0f);
-    modelGrass.draw();
-    glPopMatrix();
-    textureGrass.unbind();
 
     // Tree
     glPushMatrix();
@@ -343,7 +346,7 @@ void CCanvas::paintGL()
     glPopMatrix();
     textureTree.unbind();
 
-
+#if 0
     // Mill
     glPushMatrix();
     textureMill.bind();
@@ -369,93 +372,6 @@ void CCanvas::paintGL()
     glPopMatrix();
     texturePropeller.unbind();
 
-
-    // Rock1
-    glPushMatrix();
-    textureRock1.bind();
-    glScalef(0.2f, 0.2f, 0.2f);
-    glTranslatef(-90.0f, 100.0f, 100.0f);
-    glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
-    glTranslatef(-30.0f, sin(isle/30.0)*10.0f, 50.0f);
-    modelRock1.draw();
-    glPopMatrix();
-    textureRock1.unbind();
-
-    // Grass1
-    glPushMatrix();
-    textureGrass1.bind();
-    glScalef(0.1f, 0.1f, 0.1f);
-    glTranslatef(-90.0f, 100.0f, 100.0f);
-    glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
-    glTranslatef(-30.0f, sin(isle/30.0)*10.0f, 50.0f);
-    modelGrass1.draw();
-    glPopMatrix();
-    textureGrass1.unbind();
-
-    // Tree1
-    glPushMatrix();
-    textureTree1.bind();
-    glScalef(0.1f, 0.1f, 0.1f);
-    glTranslatef(-75.0f, 145.0f, 130.0f);
-    glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
-    glTranslatef(-30.0f, sin(isle/30.0)*10.0f, 50.0f);
-    modelTree1.draw();
-    glPopMatrix();
-    textureTree1.unbind();
-
-    // Mill1
-    glPushMatrix();
-    textureMill1.bind();
-    glScalef(0.1f, 0.1f, 0.1f);
-    glTranslatef(-65.0f, 160.0f, 100.0f);
-    glTranslatef(-30.0f, sin(isle/30.0)*10.0f, 50.0f);
-    glRotatef(180.0f, 0.0f, 1.0f, 0.0f);
-    modelMill1.draw();
-    glPopMatrix();
-    textureMill1.unbind();
-
-
-    // Propeller
-    glPushMatrix();
-    texturePropeller1.bind();
-    glScalef(0.1f, 0.1f, 0.1f);
-    glTranslatef(-50.0f, 175.0f, 100.0f);
-    glTranslatef(-30.0f, sin(isle/30.0)*10.0f, 50.0f);
-    glRotatef(-tau, 1.0f, 0.0f, 0.0f);
-    modelPropeller1.draw();
-    glPopMatrix();
-    texturePropeller1.unbind();
-
-
-
-    // You can stack new transformation matrix if you don't want
-    // the previous transformations to apply on this object
-//BOX
-    glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT);
-    glEnable(GL_COLOR_MATERIAL);
-    glColor3f(1.0f, 1.0f, 1.0f);
-
-    glPushMatrix();
-    textureBox.bind();
-//    glRotatef(180.0f, 0.0f, 0.0f, 1.0f);
-    glTranslated(0, 10, 0);
-    glScaled(180, 180, 180);
-    modelBox.draw();
-    textureBox.unbind();
-    glPopMatrix();
-
-    glColor3f(0.3, 0.3, 0.3);
-    glDisable(GL_COLOR_MATERIAL);
-//ROCKET
-    glPushMatrix();
-     textureRocket.bind();
-     glScaled(0.7,0.7,0.7);
-    glTranslatef(-6.0f, 13.0f, 50.0f);
-    glTranslatef(0.0f, sin(isle/30.0)*1.5, 0.0f);
-    glRotated(254,1,0,0);
-    modelRocket.draw();
-    textureRocket.unbind();
-    glPopMatrix();
 
     //SEAGULL BODY
     glPushMatrix();
@@ -492,5 +408,7 @@ void CCanvas::paintGL()
     seagullLeft.draw();
     textureSeagull.unbind();
     glPopMatrix();
+
+#endif
 
 }
