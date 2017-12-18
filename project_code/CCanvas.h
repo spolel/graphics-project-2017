@@ -73,6 +73,11 @@ public:
         modelBigIsland("../../../../project_code/Models/mountain-island-model.obj"),
         modelForest("../../../../project_code/Models/forest-model.obj")
 
+        //clouds
+        textureCloud("../../../../project_code/Textures/cloud-texture.png"),
+
+        modelCloud("../../../../project_code/Models/cloud-model.obj")
+
     {
         QTimer *timer = new QTimer(this);
         connect(timer, SIGNAL(timeout()), this, SLOT(updateGL()));
@@ -165,6 +170,11 @@ private:
     Texture textureBigIsland;
     ObjModel modelBigIsland;
     ObjModel modelForest;
+
+    //Clouds
+
+    Texture textureCloud;
+    ObjModel modelCloud;
 
 
 };
