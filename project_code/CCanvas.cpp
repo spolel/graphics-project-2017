@@ -212,7 +212,7 @@ void CCanvas::setView(int view) {
         lookAt(20.0, 20.0, 10.0, -15.0, 20.0, 10.0, 0.0, 1.0, 0.0);
         break;
     case 4:
-        lookAt(sin(tau*0.015 + 0.047)*60.125, 21, cos(tau*0.015 + 0.047)*60.125, sin(tau*0.015 + 0.147)*60.125, 21, cos(tau*0.015 + 0.147)*60.125, 0.0, 1.0, 0.0);
+        lookAt(sin(tau*0.015)*60, 23, cos(tau*0.015)*60, sin(tau*0.015 + 0.1)*60, 21, cos(tau*0.015 + 0.1)*60, 0.0, 1.0, 0.0);
         break;
     }
 }
@@ -327,9 +327,8 @@ void CCanvas::paintGL()
     // Rock
     glPushMatrix();
     textureRock.bind();
-    glScalef(1.0f, 1.0f, 1.0f);
-    //glTranslatef(200.0f, 100.0f, -500.0f);
-    //glRotatef(50.0f, 0.0f, 1.0f, 0.0f);
+    glTranslatef(0.0f, 15.0f, 30.0f);
+    glRotatef(180.0f, 0.0f, 1.0f, 0.0f);
     glTranslatef(0.0f, -sin(isle/40.0), 0.0f);
     modelRock.draw();
     glPopMatrix();
@@ -338,6 +337,8 @@ void CCanvas::paintGL()
     // Tree
     glPushMatrix();
     textureTree.bind();
+    glTranslatef(0.0f, 15.0f, 30.0f);
+    glRotatef(180.0f, 0.0f, 1.0f, 0.0f);
     glTranslatef(0.0f, -sin(isle/40.0), 0.0f);
     modelTree.draw();
     glPopMatrix();
@@ -347,6 +348,8 @@ void CCanvas::paintGL()
     // Mill
     glPushMatrix();
     textureMill.bind();
+    glTranslatef(0.0f, 15.0f, 30.0f);
+    glRotatef(180.0f, 0.0f, 1.0f, 0.0f);
     glTranslatef(0.0f, -sin(isle/40.0), 0.0f);
     modelMill.draw();
     glPopMatrix();
@@ -357,10 +360,10 @@ void CCanvas::paintGL()
     // Propeller
     glPushMatrix();
     texturePropeller.bind();
-    glTranslatef(0.0f, 10.0f, 0.0f);
-    glRotatef(30.0f, 0.0f, 1.0f, 0.0f); // rotate the model to face the right direction
+    glTranslatef(-0.9f, 18.0f, 31.5f);
+    glTranslatef(0.0f, -sin(isle/40.0), 0.0f);
+//    glRotatef(30.0f, 0.0f, 1.0f, 0.0f); // rotate the model to face the right direction
     glRotatef(tau, 1.0f, 0.0f, 0.0f); // rotation of the windmill propeller
-    //glTranslatef(0.0f, -sin(isle/40.0), 0.0f);
     modelPropeller.draw();
     glPopMatrix();
     texturePropeller.unbind();
