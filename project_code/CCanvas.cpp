@@ -97,6 +97,9 @@ void CCanvas::initializeGL()
     textureBigIsland.setTexture();
     modelBigIsland.init();
     modelForest.init();
+
+    textureCloud.setTexture();
+    modelCloud.init();
 }
 
 //-----------------------------------------------------------------------------
