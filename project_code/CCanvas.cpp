@@ -5,7 +5,7 @@
 
 using namespace std;
 
-double fast = 0.8;
+// double fast = 0.8;
 
 //-----------------------------------------------------------------------------
 
@@ -213,13 +213,13 @@ void CCanvas::setView(int view) {
         lookAt(sin(tau*0.015)*60, 40.0, cos(tau*0.015)*60 - 20, 0.0, 20.0, -20.0, 0.0, 1.0, 0.0);
         break;
     case 3:
-        lookAt(20.0, 20.0, 10.0, -15.0, 20.0, 10.0, 0.0, 1.0, 0.0);
+        lookAt(10.0, 20.0, 0.0, 20.0, 15.0, -50.0, 0.0, 1.0, 0.0);
         break;
     case 4:
-        lookAt(sin(tau*0.015)*60, 23, cos(tau*0.015)*60, sin(tau*0.015 + 0.1)*60, 21, cos(tau*0.015 + 0.1)*60, 0.0, 1.0, 0.0);
+        lookAt(sin(tau*0.015)*60, 23, cos(tau*0.015)*60, sin(tau*0.015 + 0.15)*60, 21, cos(tau*0.015 + 0.15)*60, 0.0, 1.0, 0.0);
         break;
     case 5:
-        lookAt(sin(tau*0.015 - 0.1)*60, 23, cos(tau*0.015/2 - 0.1)*60, sin(tau*0.015)*60, 21, cos(tau*0.015/2)*60, 0.0, 1.0, 0.0);
+        lookAt(sin(tau*0.015 - 0.09)*60, 21, cos(tau*0.015/2 - 0.09)*60, sin(tau*0.015)*60, 20.9, cos(tau*0.015/2)*60, 0.0, 1.0, 0.0);
         break;
     }
 }
@@ -255,7 +255,7 @@ void CCanvas::paintGL()
     // cout << "Isle: " << isle << std::endl;
     //glutKeyboardFunc(MyKeyboardFunc);
     //cout << tau*2 << "\n";
-    tau=tau+fast;
+    // tau=tau+fast;
     // clear screen and depth buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -301,13 +301,12 @@ void CCanvas::paintGL()
     // Before drawing an object, you can set its material properties
 
 //    glColor3f(0.5f, 0.5f, 0.5f);
-//    GLfloat amb[]  = {1.0f, 1.0f, 1.0f};
-//    GLfloat diff[] = {0.7f, 0.7f, 0.7f};
-//    GLfloat spec[] = {0.1f, 0.1f, 0.1f};
-//    GLfloat shin = 0.0001;
-//    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, amb);
-//    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diff);
-//    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, spec);
+   // GLfloat amb[]  = {1.0f, 1.0f, 1.0f};
+   // GLfloat diff[] = {0.7f, 0.7f, 0.7f};
+   // GLfloat spec[] = {0.1f, 0.1f, 0.1f};
+   // glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, amb);
+   // glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diff);
+   // glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, spec);
 //    glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, &shin);
 
 
@@ -383,12 +382,12 @@ void CCanvas::paintGL()
     textureSeagull.bind();
     glTranslated(sin(tau*0.015)*60.0, 20, cos(tau*0.015/2)*60.0);
     if (cos(tau*0.015/2) > 0) {
-        glRotatef(tau*0.85944f, 0.0f, 1.0f, 0.0f);
+        glRotatef(tau*0.8594366927f, 0.0f, 1.0f, 0.0f);
     }
     else {
-        glRotatef(-tau*0.85944f, 0.0f, 1.0f, 0.0f);
+        glRotatef(-tau*0.8594366927f, 0.0f, 1.0f, 0.0f);
     }
-//    glRotatef(tau*0.85944f, 0.0f, 1.0f, 0.0f);
+    glScaled(0.3, 0.3, 0.3);
     seagullBody.draw();
     textureSeagull.unbind();
     glPopMatrix();
@@ -398,15 +397,16 @@ void CCanvas::paintGL()
     textureSeagull.bind();
     glTranslated(sin(tau*0.015)*60.0, 20, cos(tau*0.015/2)*60.0);
     if (cos(tau*0.015/2) > 0) {
-        glRotatef(tau*0.85944f, 0.0f, 1.0f, 0.0f);
+        glRotatef(tau*0.8594366927f, 0.0f, 1.0f, 0.0f);
     }
     else {
-        glRotatef(-tau*0.85944f, 0.0f, 1.0f, 0.0f);
+        glRotatef(-tau*0.8594366927f, 0.0f, 1.0f, 0.0f);
     }
     // x = speed of flapping
     // y = angle covered of flapping
     // z = offset where flapping start
     glRotatef(sin(-tau*0.1)*50 - 25, 1.0f, 0.0f, 0.0f);
+    glScaled(0.3, 0.3, 0.3);
     seagullRight.draw();
     textureSeagull.unbind();
     glPopMatrix();
@@ -416,16 +416,17 @@ void CCanvas::paintGL()
     textureSeagull.bind();
     glTranslated(sin(tau*0.015)*60.0, 20, cos(tau*0.015/2)*60.0);
     if (cos(tau*0.015/2) > 0) {
-        glRotatef(tau*0.85944f, 0.0f, 1.0f, 0.0f);
+        glRotatef(tau*0.8594366927f, 0.0f, 1.0f, 0.0f);
     }
     else {
-        glRotatef(-tau*0.85944f, 0.0f, 1.0f, 0.0f);
+        glRotatef(-tau*0.8594366927f, 0.0f, 1.0f, 0.0f);
     }
     //sin(tau*x)*y + z
     // x = speed of flapping
     // y = angle covered of flapping
     // z = offset where flapping start
     glRotatef(sin(tau*0.1)*50 + 25, 1.0f, 0.0f, 0.0f);
+    glScaled(0.3, 0.3, 0.3);
     seagullLeft.draw();
     textureSeagull.unbind();
     glPopMatrix();
@@ -437,5 +438,7 @@ void CCanvas::paintGL()
     bigIsland.draw();
     textureBigIsland.unbind();
     glPopMatrix();
+
+    tau=tau+1.0;
 
 }
