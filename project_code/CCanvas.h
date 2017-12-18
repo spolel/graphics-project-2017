@@ -76,7 +76,9 @@ public:
         //clouds
         textureCloud("../../../../project_code/Textures/cloud-texture.png"),
 
-        modelCloud("../../../../project_code/Models/cloud-model.obj")
+        modelCloud("../../../../project_code/Models/cloud-model.obj"),
+        modelCloud1("../../../../project_code/Models/cloud-model.obj"),
+        modelCloud2("../../../../project_code/Models/cloud-model.obj")
 
     {
         QTimer *timer = new QTimer(this);
@@ -175,6 +177,8 @@ private:
 
     Texture textureCloud;
     ObjModel modelCloud;
+    ObjModel modelCloud1;
+    ObjModel modelCloud2;
 
 };
 

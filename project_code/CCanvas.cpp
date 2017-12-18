@@ -100,6 +100,8 @@ void CCanvas::initializeGL()
 
     textureCloud.setTexture();
     modelCloud.init();
+    modelCloud1.init();
+    modelCloud2.init();
 }
 
 //-----------------------------------------------------------------------------
@@ -578,12 +580,34 @@ void CCanvas::paintGL()
     textureTree.unbind();
     glPopMatrix();
 
+    //CLOUDS
+
     glPushMatrix();
     textureCloud.bind();
-    glRotatef(tau, 1.0f, 0.0f, 0.0f);
+    glRotatef(tau/100, 0.0f, 1.0f, 0.0f);
     glTranslated(20,20,-50);
     glScalef(4.0f,4.0f,4.0f);
     modelCloud.draw();
+    textureCloud.unbind();
+    glPopMatrix();
+
+    glPushMatrix();
+    textureCloud.bind();
+    glRotatef(tau/100, 0.0f, -1.0f, 0.0f);
+    glTranslated(-50,50,-70);
+    glScalef(4.0f,4.0f,4.0f);
+    glRotatef(-20.0, 0.0f, -1.0f, 0.0f);
+    modelCloud1.draw();
+    textureCloud.unbind();
+    glPopMatrix();
+
+    glPushMatrix();
+    textureCloud.bind();
+    glRotatef(tau/60, 0.0f, 1.0f, 0.0f);
+    glTranslated(-100,40,-90);
+    glRotatef(80.0, 0.0f, -1.0f, 0.0f);
+    glScalef(4.0f,4.0f,4.0f);
+    modelCloud2.draw();
     textureCloud.unbind();
     glPopMatrix();
 
