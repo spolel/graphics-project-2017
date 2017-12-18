@@ -220,16 +220,16 @@ void CCanvas::setView(int view) {
         lookAt(10.0, 20.0, 45.0, 0.0, 20.0, -20.0, 0.0, 1.0, 0.0);
         break;
     case 2:
-        lookAt(sin(tau*0.015)*60, 40.0, cos(tau*0.015)*60 - 20, 0.0, 20.0, -20.0, 0.0, 1.0, 0.0);
+        lookAt(sin(tau*0.015)*80, 40.0, cos(tau*0.015)*80 - 20, 0.0, 20.0, -20.0, 0.0, 1.0, 0.0);
         break;
     case 3:
         lookAt(10.0, 20.0, 0.0, 20.0, 15.0, -50.0, 0.0, 1.0, 0.0);
         break;
     case 4:
-        lookAt(sin(tau*0.015)*60, 23, cos(tau*0.015)*60, sin(tau*0.015 + 0.15)*60, 21, cos(tau*0.015 + 0.15)*60, 0.0, 1.0, 0.0);
+        lookAt(sin(tau*0.015 - 0.03)*10 - 7.0, 20.6, cos(tau*0.015 - 0.03)*10 + 30.0, sin(tau*0.015)*10 - 7.0, 20.5, cos(tau*0.015)*10 + 30.0, 0.0, 1.0, 0.0);
         break;
     case 5:
-        lookAt(sin(tau*0.015 - 0.09)*50, 21, cos(tau*0.015/2 - 0.09)*50, sin(tau*0.015)*50, 20.9, cos(tau*0.015/2)*50, 0.0, 1.0, 0.0);
+        lookAt(sin(tau*0.01 - 0.05)*50, 21, cos(tau*0.01/2 - 0.05)*50, sin(tau*0.01)*50, 20.9, cos(tau*0.01/2)*50, 0.0, 1.0, 0.0);
         break;
     }
 }
@@ -279,7 +279,18 @@ void CCanvas::paintGL()
     setView(view);
 
     // You can always change the light position here if you want
-    GLfloat lightpos[] = {0.0f, 1000.0f, -1000.0f, 0.0f};
+    // GLfloat lightpos[] = {0.0f, 1000.0f, -1000.0f, 0.0f};
+
+    GLfloat lightpos[] = {300.0f, 700.0f, 500.0f, 0.0f};
+    glColor3f(0.5f, 0.5f, 0.5f);
+    GLfloat amb[]  = {0.3f, 0.1f, 0.1f};
+    GLfloat diff[] = {0.8f, 0.8f, 0.8f};
+    GLfloat spec[] = {0.02f, 0.02f, 0.02f};
+
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, amb);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diff);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, spec);
+
     glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
 
     /**** Axes in the global coordinate system ****/
@@ -390,12 +401,12 @@ void CCanvas::paintGL()
     //SEAGULL BODY
     glPushMatrix();
     textureSeagull.bind();
-    glTranslated(sin(tau*0.015)*50.0, 20, cos(tau*0.015/2)*50.0);
-    if (cos(tau*0.015/2) > 0) {
-        glRotatef(tau*0.8594366927f, 0.0f, 1.0f, 0.0f);
+    glTranslated(sin(tau*0.01)*50.0, 20, cos(tau*0.01/2)*50.0);
+    if (cos(tau*0.01/2) > 0) {
+        glRotatef(tau*0.5729578f, 0.0f, 1.0f, 0.0f);
     }
     else {
-        glRotatef(-tau*0.8594366927f, 0.0f, 1.0f, 0.0f);
+        glRotatef(-tau*0.5729578f, 0.0f, 1.0f, 0.0f);
     }
     glScaled(0.1, 0.1, 0.1);
     seagullBody.draw();
@@ -405,12 +416,12 @@ void CCanvas::paintGL()
     //SEAGULL RIGHT WING
     glPushMatrix();
     textureSeagull.bind();
-    glTranslated(sin(tau*0.015)*50.0, 20, cos(tau*0.015/2)*50.0);
-    if (cos(tau*0.015/2) > 0) {
-        glRotatef(tau*0.8594366927f, 0.0f, 1.0f, 0.0f);
+    glTranslated(sin(tau*0.01)*50.0, 20, cos(tau*0.01/2)*50.0);
+    if (cos(tau*0.01/2) > 0) {
+        glRotatef(tau*0.5729578f, 0.0f, 1.0f, 0.0f);
     }
     else {
-        glRotatef(-tau*0.8594366927f, 0.0f, 1.0f, 0.0f);
+        glRotatef(-tau*0.5729578f, 0.0f, 1.0f, 0.0f);
     }
     // x = speed of flapping
     // y = angle covered of flapping
@@ -424,12 +435,12 @@ void CCanvas::paintGL()
     //SEAGULL LEFT WING
     glPushMatrix();
     textureSeagull.bind();
-    glTranslated(sin(tau*0.015)*50.0, 20, cos(tau*0.015/2)*50.0);
-    if (cos(tau*0.015/2) > 0) {
-        glRotatef(tau*0.8594366927f, 0.0f, 1.0f, 0.0f);
+    glTranslated(sin(tau*0.01)*50.0, 20, cos(tau*0.01/2)*50.0);
+    if (cos(tau*0.01/2) > 0) {
+        glRotatef(tau*0.5729578f, 0.0f, 1.0f, 0.0f);
     }
     else {
-        glRotatef(-tau*0.8594366927f, 0.0f, 1.0f, 0.0f);
+        glRotatef(-tau*0.5729578f, 0.0f, 1.0f, 0.0f);
     }
     //sin(tau*x)*y + z
     // x = speed of flapping
@@ -446,8 +457,8 @@ void CCanvas::paintGL()
     //SEAGULL1 BODY
     glPushMatrix();
     textureSeagull.bind();
-    glTranslated(sin(tau*0.015)*20.0, 10, 0.0f);
-    glRotatef(tau*0.85944f, 0.0f, 1.0f, 0.0f);
+    glTranslated(sin(tau*0.015)*10.0 - 7.0f, 20, cos(tau*0.015)*10.0 + 30.0);
+    glRotatef(tau*0.85943669f, 0.0f, 1.0f, 0.0f);
     glScaled(0.1, 0.1, 0.1);
     seagullBody.draw();
     textureSeagull.unbind();
@@ -456,11 +467,11 @@ void CCanvas::paintGL()
     //SEAGULL1 RIGHT WING
     glPushMatrix();
     textureSeagull.bind();
-    glTranslated(sin(tau*0.015)*20.0, 10, 0.0f);
+    glTranslated(sin(tau*0.015)*10.0 - 7.0f, 20, cos(tau*0.015)*10.0 + 30.0);
     // x = speed of flapping
     // y = angle covered of flapping
     // z = offset where flapping start
-    glRotatef(tau*0.85944f, 0.0f, 1.0f, 0.0f);
+    glRotatef(tau*0.85943669f, 0.0f, 1.0f, 0.0f);
     glRotatef(sin(-tau*0.1)*50 - 25, 1.0f, 0.0f, 0.0f);
     glScaled(0.1, 0.1, 0.1);
     seagullRight.draw();
@@ -470,13 +481,13 @@ void CCanvas::paintGL()
     //SEAGULL1 LEFT WING
     glPushMatrix();
     textureSeagull.bind();
-    glTranslated(sin(tau*0.015)*20.0, 10, 0.0f);
+    glTranslated(sin(tau*0.015)*10.0 - 7.0f, 20, cos(tau*0.015)*10.0 + 30.0);
     //sin(tau*x)*y + z
     // x = speed of flapping
     // y = angle covered of flapping
     // z = offset where flapping start
     //glRotatef(sin(tau*0.1)*50 + 25, 1.0f, 0.0f, 0.0f);
-    glRotatef(tau*0.85944f, 0.0f, 1.0f, 0.0f);
+    glRotatef(tau*0.85943669f, 0.0f, 1.0f, 0.0f);
     glRotatef(sin(tau*0.1)*50 + 25, 1.0f, 0.0f, 0.0f);
     glScaled(0.1, 0.1, 0.1);
     seagullLeft.draw();
