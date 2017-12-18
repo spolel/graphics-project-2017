@@ -252,6 +252,9 @@ void CCanvas::keyPressEvent(QKeyEvent *e)
     case Qt::Key_5:
         view = 5;
         break;
+    case Qt::Key_S:
+        start = true;
+        break;
     }
 }
 
@@ -498,6 +501,9 @@ void CCanvas::paintGL()
     glPushMatrix();
     textureUfo.bind();
     glTranslated(20,17 + -sin(isle/40.0),-40);
+    if(start){
+        glTranslated(0,tempTau/50,0);
+    }
     ufoBody.draw();
     textureUfo.unbind();
     glPopMatrix();
@@ -506,6 +512,9 @@ void CCanvas::paintGL()
     glPushMatrix();
     textureUfo.bind();
     glTranslated(20,17 + -sin(isle/40.0),-40);
+    if(start){
+        glTranslated(0,tempTau/50,0);
+    }
     ufoLeg1.draw();
     textureUfo.unbind();
     glPopMatrix();
@@ -513,6 +522,9 @@ void CCanvas::paintGL()
     glPushMatrix();
     textureUfo.bind();
     glTranslated(20,17 + -sin(isle/40.0),-40);
+    if(start){
+        glTranslated(0,tempTau/50,0);
+    }
     ufoLeg2.draw();
     textureUfo.unbind();
     glPopMatrix();
@@ -520,6 +532,9 @@ void CCanvas::paintGL()
     glPushMatrix();
     textureUfo.bind();
     glTranslated(20,17 + -sin(isle/40.0),-40);
+    if(start){
+        glTranslated(0,tempTau/50,0);
+    }
     ufoLeg3.draw();
     textureUfo.unbind();
     glPopMatrix();
@@ -534,5 +549,8 @@ void CCanvas::paintGL()
     glPopMatrix();
 
     tau=tau+1.0;
+    if(start){
+        tempTau +=1;
+    }
 
 }
