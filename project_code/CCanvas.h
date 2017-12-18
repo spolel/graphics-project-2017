@@ -111,6 +111,8 @@ private:
 
     int view = 1;
     bool start = false;
+    double beginpos = 0;
+    double retract = 0;
     double tempTau = 0;
 
     void setView(int view);
