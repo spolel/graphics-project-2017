@@ -286,7 +286,7 @@ void CCanvas::paintGL()
 
     GLfloat lightpos[] = {300.0f, 700.0f, 500.0f, 0.0f};
     glColor3f(0.5f, 0.5f, 0.5f);
-    GLfloat amb[]  = {0.3f, 0.1f, 0.1f};
+    GLfloat amb[]  = {0.1f, 0.1f, 0.1f};
     GLfloat diff[] = {0.8f, 0.8f, 0.8f};
     GLfloat spec[] = {0.02f, 0.02f, 0.02f};
 
