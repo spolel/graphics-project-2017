@@ -578,6 +578,14 @@ void CCanvas::paintGL()
     textureTree.unbind();
     glPopMatrix();
 
+    glPushMatrix();
+    textureCloud.bind();
+    glTranslated(20,20,-50);
+    glScalef(4.0f,4.0f,4.0f);
+    modelCloud.draw();
+    textureCloud.unbind();
+    glPopMatrix();
+
     tau=tau+1.0;
     if(start){
         tempTau +=1;
