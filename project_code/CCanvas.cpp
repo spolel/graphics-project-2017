@@ -580,6 +580,7 @@ void CCanvas::paintGL()
 
     glPushMatrix();
     textureCloud.bind();
+    glRotatef(tau, 1.0f, 0.0f, 0.0f);
     glTranslated(20,20,-50);
     glScalef(4.0f,4.0f,4.0f);
     modelCloud.draw();
